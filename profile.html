@@ -1,0 +1,3775 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Mon profil — MindBattle</title>
+
+
+<style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+
+        min-height: 100vh;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        color:
+            #f8fafc;
+
+        background:
+
+            radial-gradient(
+                circle at 10% 10%,
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.20
+                ),
+                transparent 35%
+            ),
+
+            radial-gradient(
+                circle at 90% 90%,
+                rgba(
+                    147,
+                    51,
+                    234,
+                    0.15
+                ),
+                transparent 35%
+            ),
+
+            #070a12;
+
+    }
+
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+
+    button,
+    input,
+    textarea {
+        font-family: inherit;
+    }
+
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .top-bar {
+
+        position:
+            sticky;
+
+        top:
+            0;
+
+        z-index:
+            1000;
+
+        width:
+            100%;
+
+        height:
+            72px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            space-between;
+
+        padding:
+            0 5%;
+
+        background:
+            rgba(
+                7,
+                10,
+                18,
+                0.88
+            );
+
+        border-bottom:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            );
+
+        backdrop-filter:
+            blur(
+                18px
+            );
+
+    }
+
+
+    .logo {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            10px;
+
+        font-size:
+            20px;
+
+        font-weight:
+            800;
+
+    }
+
+
+    .logo-icon {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        border-radius:
+            11px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        box-shadow:
+            0 8px 22px
+            rgba(
+                124,
+                58,
+                237,
+                0.30
+            );
+
+    }
+
+
+    .main-nav {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            8px;
+
+    }
+
+
+    .nav-link {
+
+        padding:
+            9px 13px;
+
+        color:
+            #94a3b8;
+
+        border-radius:
+            9px;
+
+        font-size:
+            12px;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    .nav-link:hover {
+
+        color:
+            #ffffff;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+    }
+
+
+    .nav-link.active {
+
+        color:
+            #c4b5fd;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.12
+            );
+
+    }
+
+
+    .nav-actions {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            8px;
+
+    }
+
+
+    .nav-button {
+
+        padding:
+            9px 14px;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.08
+            );
+
+        border-radius:
+            9px;
+
+        color:
+            #cbd5e1;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.03
+            );
+
+        font-size:
+            11px;
+
+        cursor:
+            pointer;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    .nav-button:hover {
+
+        color:
+            #ffffff;
+
+        border-color:
+            rgba(
+                139,
+                92,
+                246,
+                0.40
+            );
+
+    }
+
+
+
+    /* =====================================================
+       CONTENU
+    ===================================================== */
+
+    .page-container {
+
+        width:
+            100%;
+
+        max-width:
+            1150px;
+
+        margin:
+            0 auto;
+
+        padding:
+            45px 20px 70px;
+
+    }
+
+
+
+    /* =====================================================
+       EN-TÊTE PROFIL
+    ===================================================== */
+
+    .profile-header {
+
+        position:
+            relative;
+
+        overflow:
+            hidden;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            28px;
+
+        padding:
+            35px;
+
+        margin-bottom:
+            25px;
+
+        background:
+
+            radial-gradient(
+                circle at 90% 10%,
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.22
+                ),
+                transparent 40%
+            ),
+
+            #0d101a;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            );
+
+        border-radius:
+            22px;
+
+    }
+
+
+    .profile-header::after {
+
+        content:
+            "";
+
+        position:
+            absolute;
+
+        width:
+            200px;
+
+        height:
+            200px;
+
+        right:
+            -100px;
+
+        bottom:
+            -120px;
+
+        border-radius:
+            50%;
+
+        background:
+            rgba(
+                147,
+                51,
+                234,
+                0.12
+            );
+
+    }
+
+
+
+    /* =====================================================
+       AVATAR
+    ===================================================== */
+
+    .profile-avatar {
+
+        position:
+            relative;
+
+        z-index:
+            2;
+
+        width:
+            105px;
+
+        height:
+            105px;
+
+        flex-shrink:
+            0;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        border-radius:
+            28px;
+
+        font-size:
+            52px;
+
+        background:
+
+            linear-gradient(
+                135deg,
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.30
+                ),
+                rgba(
+                    147,
+                    51,
+                    234,
+                    0.18
+                )
+            );
+
+        border:
+            2px solid
+            rgba(
+                167,
+                139,
+                250,
+                0.30
+            );
+
+        box-shadow:
+            0 15px 40px
+            rgba(
+                0,
+                0,
+                0,
+                0.30
+            );
+
+    }
+
+
+    .online-dot {
+
+        position:
+            absolute;
+
+        right:
+            5px;
+
+        bottom:
+            5px;
+
+        width:
+            17px;
+
+        height:
+            17px;
+
+        border:
+            3px solid
+            #0d101a;
+
+        border-radius:
+            50%;
+
+        background:
+            #22c55e;
+
+    }
+
+
+
+    /* =====================================================
+       INFOS
+    ===================================================== */
+
+    .profile-info {
+
+        position:
+            relative;
+
+        z-index:
+            2;
+
+        flex:
+            1;
+
+    }
+
+
+    .profile-badge {
+
+        display:
+            inline-flex;
+
+        padding:
+            6px 10px;
+
+        margin-bottom:
+            10px;
+
+        color:
+            #c4b5fd;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.12
+            );
+
+        border:
+            1px solid
+            rgba(
+                139,
+                92,
+                246,
+                0.20
+            );
+
+        border-radius:
+            999px;
+
+        font-size:
+            10px;
+
+        font-weight:
+            800;
+
+    }
+
+
+    .profile-name {
+
+        margin-bottom:
+            5px;
+
+        font-size:
+            28px;
+
+        font-weight:
+            800;
+
+    }
+
+
+    .profile-username {
+
+        margin-bottom:
+            12px;
+
+        color:
+            #a78bfa;
+
+        font-size:
+            13px;
+
+    }
+
+
+    .profile-bio {
+
+        max-width:
+            600px;
+
+        color:
+            #94a3b8;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.6;
+
+    }
+
+
+    .profile-actions {
+
+        position:
+            relative;
+
+        z-index:
+            3;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            9px;
+
+    }
+
+
+    .edit-button {
+
+        padding:
+            11px 18px;
+
+        color:
+            #ffffff;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        border:
+            none;
+
+        border-radius:
+            10px;
+
+        font-size:
+            12px;
+
+        font-weight:
+            700;
+
+        cursor:
+            pointer;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    .edit-button:hover {
+
+        transform:
+            translateY(
+                -2px
+            );
+
+        box-shadow:
+            0 10px 25px
+            rgba(
+                124,
+                58,
+                237,
+                0.25
+            );
+
+    }
+
+
+    .logout-button {
+
+        padding:
+            10px 18px;
+
+        color:
+            #fca5a5;
+
+        background:
+            rgba(
+                239,
+                68,
+                68,
+                0.08
+            );
+
+        border:
+            1px solid
+            rgba(
+                239,
+                68,
+                68,
+                0.18
+            );
+
+        border-radius:
+            10px;
+
+        font-size:
+            11px;
+
+        cursor:
+            pointer;
+
+    }
+
+
+
+    /* =====================================================
+       STATISTIQUES
+    ===================================================== */
+
+    .stats-grid {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(
+                4,
+                1fr
+            );
+
+        gap:
+            15px;
+
+        margin-bottom:
+            25px;
+
+    }
+
+
+    .stat-card {
+
+        padding:
+            22px;
+
+        background:
+            #0d101a;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            );
+
+        border-radius:
+            16px;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    .stat-card:hover {
+
+        transform:
+            translateY(
+                -3px
+            );
+
+        border-color:
+            rgba(
+                139,
+                92,
+                246,
+                0.25
+            );
+
+    }
+
+
+    .stat-icon {
+
+        margin-bottom:
+            12px;
+
+        font-size:
+            22px;
+
+    }
+
+
+    .stat-value {
+
+        margin-bottom:
+            5px;
+
+        font-size:
+            25px;
+
+        font-weight:
+            800;
+
+    }
+
+
+    .stat-label {
+
+        color:
+            #64748b;
+
+        font-size:
+            11px;
+
+    }
+
+
+
+    /* =====================================================
+       GRILLE PRINCIPALE
+    ===================================================== */
+
+    .content-grid {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            1.5fr
+            0.8fr;
+
+        gap:
+            20px;
+
+    }
+
+
+    .content-card {
+
+        padding:
+            25px;
+
+        background:
+            #0d101a;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            );
+
+        border-radius:
+            18px;
+
+    }
+
+
+    .card-title {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            space-between;
+
+        margin-bottom:
+            20px;
+
+    }
+
+
+    .card-title h2 {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .card-title span {
+
+        color:
+            #64748b;
+
+        font-size:
+            11px;
+
+    }
+
+
+
+    /* =====================================================
+       LISTE DES DEBATS
+    ===================================================== */
+
+    .debates-list {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            14px;
+
+    }
+
+
+    .debate-item {
+
+        padding:
+            18px;
+
+        background:
+            #111522;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            );
+
+        border-radius:
+            14px;
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .debate-item:hover {
+
+        transform:
+            translateY(
+                -2px
+            );
+
+        border-color:
+            rgba(
+                139,
+                92,
+                246,
+                0.30
+            );
+
+    }
+
+
+    .debate-item-top {
+
+        display:
+            flex;
+
+        align-items:
+            flex-start;
+
+        justify-content:
+            space-between;
+
+        gap:
+            15px;
+
+        margin-bottom:
+            10px;
+
+    }
+
+
+    .debate-category {
+
+        display:
+            inline-flex;
+
+        padding:
+            5px 9px;
+
+        color:
+            #c4b5fd;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.12
+            );
+
+        border-radius:
+            7px;
+
+        font-size:
+            9px;
+
+        font-weight:
+            800;
+
+        text-transform:
+            uppercase;
+
+    }
+
+
+    .debate-status {
+
+        color:
+            #86efac;
+
+        font-size:
+            10px;
+
+        font-weight:
+            700;
+
+    }
+
+
+    .debate-title {
+
+        margin-bottom:
+            8px;
+
+        color:
+            #f8fafc;
+
+        font-size:
+            15px;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    .debate-description {
+
+        margin-bottom:
+            14px;
+
+        color:
+            #64748b;
+
+        font-size:
+            11px;
+
+        line-height:
+            1.6;
+
+        display:
+            -webkit-box;
+
+        -webkit-line-clamp:
+            2;
+
+        -webkit-box-orient:
+            vertical;
+
+        overflow:
+            hidden;
+
+    }
+
+
+    .debate-meta {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            space-between;
+
+        gap:
+            10px;
+
+        padding-top:
+            12px;
+
+        border-top:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+    }
+
+
+    .debate-stats {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            12px;
+
+        color:
+            #64748b;
+
+        font-size:
+            10px;
+
+    }
+
+
+    .view-debate-button {
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        padding:
+            8px 12px;
+
+        color:
+            #c4b5fd;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.10
+            );
+
+        border:
+            1px solid
+            rgba(
+                139,
+                92,
+                246,
+                0.18
+            );
+
+        border-radius:
+            8px;
+
+        font-size:
+            10px;
+
+        font-weight:
+            700;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    .view-debate-button:hover {
+
+        color:
+            #ffffff;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.20
+            );
+
+    }
+
+
+
+    /* =====================================================
+       ETAT VIDE
+    ===================================================== */
+
+    .empty-state {
+
+        padding:
+            35px 20px;
+
+        text-align:
+            center;
+
+        color:
+            #64748b;
+
+    }
+
+
+    .empty-icon {
+
+        margin-bottom:
+            12px;
+
+        font-size:
+            35px;
+
+    }
+
+
+    .empty-state h3 {
+
+        margin-bottom:
+            8px;
+
+        color:
+            #cbd5e1;
+
+        font-size:
+            14px;
+
+    }
+
+
+    .empty-state p {
+
+        margin-bottom:
+            18px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    .create-debate-button {
+
+        display:
+            inline-flex;
+
+        padding:
+            10px 15px;
+
+        color:
+            #ffffff;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        border-radius:
+            9px;
+
+        font-size:
+            11px;
+
+        font-weight:
+            700;
+
+    }
+
+
+
+    /* =====================================================
+       INFORMATIONS
+    ===================================================== */
+
+    .info-list {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            14px;
+
+    }
+
+
+    .info-item {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            12px;
+
+        padding-bottom:
+            13px;
+
+        border-bottom:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+    }
+
+
+    .info-item:last-child {
+
+        padding-bottom:
+            0;
+
+        border-bottom:
+            none;
+
+    }
+
+
+    .info-icon {
+
+        width:
+            34px;
+
+        height:
+            34px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        flex-shrink:
+            0;
+
+        border-radius:
+            9px;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.10
+            );
+
+    }
+
+
+    .info-content {
+
+        min-width:
+            0;
+
+    }
+
+
+    .info-label {
+
+        display:
+            block;
+
+        margin-bottom:
+            3px;
+
+        color:
+            #64748b;
+
+        font-size:
+            10px;
+
+    }
+
+
+    .info-value {
+
+        display:
+            block;
+
+        overflow:
+            hidden;
+
+        color:
+            #cbd5e1;
+
+        font-size:
+            12px;
+
+        text-overflow:
+            ellipsis;
+
+        white-space:
+            nowrap;
+
+    }
+
+
+
+    /* =====================================================
+       MODALE EDITION
+    ===================================================== */
+
+    .modal-overlay {
+
+        position:
+            fixed;
+
+        inset:
+            0;
+
+        z-index:
+            2000;
+
+        display:
+            none;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        padding:
+            20px;
+
+        background:
+            rgba(
+                0,
+                0,
+                0,
+                0.70
+            );
+
+        backdrop-filter:
+            blur(
+                8px
+            );
+
+    }
+
+
+    .modal-overlay.active {
+
+        display:
+            flex;
+
+    }
+
+
+    .modal {
+
+        width:
+            100%;
+
+        max-width:
+            480px;
+
+        padding:
+            28px;
+
+        background:
+            #0d101a;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.08
+            );
+
+        border-radius:
+            20px;
+
+        box-shadow:
+            0 30px 80px
+            rgba(
+                0,
+                0,
+                0,
+                0.50
+            );
+
+    }
+
+
+    .modal-header {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            space-between;
+
+        margin-bottom:
+            22px;
+
+    }
+
+
+    .modal-header h2 {
+
+        font-size:
+            20px;
+
+    }
+
+
+    .close-modal {
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+        color:
+            #94a3b8;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+        border:
+            none;
+
+        border-radius:
+            8px;
+
+        cursor:
+            pointer;
+
+    }
+
+
+    .modal-group {
+
+        margin-bottom:
+            16px;
+
+    }
+
+
+    .modal-group label {
+
+        display:
+            block;
+
+        margin-bottom:
+            7px;
+
+        color:
+            #cbd5e1;
+
+        font-size:
+            11px;
+
+        font-weight:
+            700;
+
+    }
+
+
+    .modal-input,
+    .modal-textarea {
+
+        width:
+            100%;
+
+        padding:
+            12px;
+
+        color:
+            #ffffff;
+
+        background:
+            #111522;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.08
+            );
+
+        border-radius:
+            9px;
+
+        outline:
+            none;
+
+        font-size:
+            12px;
+
+    }
+
+
+    .modal-textarea {
+
+        min-height:
+            90px;
+
+        resize:
+            vertical;
+
+    }
+
+
+    .modal-input:focus,
+    .modal-textarea:focus {
+
+        border-color:
+            #8b5cf6;
+
+    }
+
+
+    .modal-actions {
+
+        display:
+            flex;
+
+        justify-content:
+            flex-end;
+
+        gap:
+            10px;
+
+        margin-top:
+            22px;
+
+    }
+
+
+    .cancel-button {
+
+        padding:
+            10px 17px;
+
+        color:
+            #94a3b8;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+        border:
+            none;
+
+        border-radius:
+            9px;
+
+        cursor:
+            pointer;
+
+        font-size:
+            11px;
+
+    }
+
+
+    .save-button {
+
+        padding:
+            10px 18px;
+
+        color:
+            #ffffff;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        border:
+            none;
+
+        border-radius:
+            9px;
+
+        cursor:
+            pointer;
+
+        font-size:
+            11px;
+
+        font-weight:
+            700;
+
+    }
+
+
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    .toast {
+
+        position:
+            fixed;
+
+        right:
+            20px;
+
+        bottom:
+            20px;
+
+        z-index:
+            3000;
+
+        max-width:
+            320px;
+
+        padding:
+            13px 17px;
+
+        color:
+            #ffffff;
+
+        background:
+            #161a27;
+
+        border:
+            1px solid
+            rgba(
+                139,
+                92,
+                246,
+                0.30
+            );
+
+        border-radius:
+            10px;
+
+        box-shadow:
+            0 15px 40px
+            rgba(
+                0,
+                0,
+                0,
+                0.40
+            );
+
+        font-size:
+            12px;
+
+        opacity:
+            0;
+
+        pointer-events:
+            none;
+
+        transform:
+            translateY(
+                20px
+            );
+
+        transition:
+            0.3s ease;
+
+    }
+
+
+    .toast.show {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(
+                0
+            );
+
+    }
+
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (
+        max-width: 850px
+    ) {
+
+        .main-nav {
+            display: none;
+        }
+
+
+        .profile-header {
+
+            align-items:
+                flex-start;
+
+            flex-wrap:
+                wrap;
+
+        }
+
+
+        .profile-actions {
+
+            width:
+                100%;
+
+            flex-direction:
+                row;
+
+        }
+
+
+        .content-grid {
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+
+        .stats-grid {
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+        }
+
+    }
+
+
+
+    @media (
+        max-width: 550px
+    ) {
+
+        .top-bar {
+
+            padding:
+                0 18px;
+
+        }
+
+
+        .nav-actions {
+
+            display:
+                none;
+
+        }
+
+
+        .page-container {
+
+            padding:
+                25px 15px 50px;
+
+        }
+
+
+        .profile-header {
+
+            padding:
+                25px;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            text-align:
+                center;
+
+        }
+
+
+        .profile-info {
+
+            width:
+                100%;
+
+        }
+
+
+        .profile-bio {
+
+            margin:
+                0 auto;
+
+        }
+
+
+        .profile-actions {
+
+            justify-content:
+                center;
+
+        }
+
+
+        .stats-grid {
+
+            gap:
+                10px;
+
+        }
+
+
+        .stat-card {
+
+            padding:
+                16px;
+
+        }
+
+
+        .stat-value {
+
+            font-size:
+                21px;
+
+        }
+
+
+        .content-card {
+
+            padding:
+                20px;
+
+        }
+
+
+        .debate-item-top {
+
+            flex-direction:
+                column;
+
+        }
+
+
+        .debate-meta {
+
+            align-items:
+                flex-start;
+
+            flex-direction:
+                column;
+
+        }
+
+
+        .view-debate-button {
+
+            width:
+                100%;
+
+            justify-content:
+                center;
+
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="top-bar">
+
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <div class="logo-icon">
+            🧠
+        </div>
+
+        <span>
+            MindBattle
+        </span>
+
+    </a>
+
+
+
+    <nav class="main-nav">
+
+        <a
+            href="index.html"
+            class="nav-link"
+        >
+            🏠 Accueil
+        </a>
+
+        <a
+            href="explorer.html"
+            class="nav-link"
+        >
+            🔍 Explorer
+        </a>
+
+        <a
+            href="debates.html"
+            class="nav-link"
+        >
+            ⚔️ Débats
+        </a>
+
+        <a
+            href="profile.html"
+            class="nav-link active"
+        >
+            👤 Profil
+        </a>
+
+    </nav>
+
+
+
+    <div class="nav-actions">
+
+        <button
+            class="nav-button"
+            id="logoutTopButton"
+        >
+            🚪 Déconnexion
+        </button>
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTENU
+===================================================== -->
+
+<main class="page-container">
+
+
+
+    <!-- =================================================
+         HEADER PROFIL
+    ================================================== -->
+
+    <section class="profile-header">
+
+
+        <div
+            class="profile-avatar"
+            id="profileAvatar"
+        >
+
+            🧠
+
+            <span class="online-dot"></span>
+
+        </div>
+
+
+
+        <div class="profile-info">
+
+
+            <span class="profile-badge">
+                ⚔️ MEMBRE MINDBATTLE
+            </span>
+
+
+            <h1
+                class="profile-name"
+                id="profileName"
+            >
+                Ton nom
+            </h1>
+
+
+            <div
+                class="profile-username"
+                id="profileUsername"
+            >
+                @username
+            </div>
+
+
+            <p
+                class="profile-bio"
+                id="profileBio"
+            >
+                Nouveau membre de MindBattle.
+            </p>
+
+
+        </div>
+
+
+
+        <div class="profile-actions">
+
+
+            <button
+                class="edit-button"
+                id="editProfileButton"
+            >
+                ✏️ Modifier le profil
+            </button>
+
+
+            <button
+                class="logout-button"
+                id="logoutButton"
+            >
+                🚪 Se déconnecter
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         STATISTIQUES
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🏆
+            </div>
+
+            <div
+                class="stat-value"
+                id="pointsValue"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Points
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⚔️
+            </div>
+
+            <div
+                class="stat-value"
+                id="debatesValue"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Débats créés
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🗳️
+            </div>
+
+            <div
+                class="stat-value"
+                id="votesValue"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Votes
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🔥
+            </div>
+
+            <div
+                class="stat-value"
+                id="levelValue"
+            >
+                Débutant
+            </div>
+
+            <div class="stat-label">
+                Niveau
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONTENU
+    ================================================== -->
+
+    <section class="content-grid">
+
+
+
+        <!-- =================================================
+             DEBATS
+        ================================================== -->
+
+        <div class="content-card">
+
+
+            <div class="card-title">
+
+                <h2>
+                    ⚔️ Mes débats
+                </h2>
+
+                <span id="debatesCountLabel">
+                    0 débat
+                </span>
+
+            </div>
+
+
+
+            <div
+                class="debates-list"
+                id="debatesContainer"
+            ></div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             INFORMATIONS
+        ================================================== -->
+
+        <div class="content-card">
+
+
+            <div class="card-title">
+
+                <h2>
+                    📋 Informations
+                </h2>
+
+            </div>
+
+
+
+            <div class="info-list">
+
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        📧
+                    </div>
+
+                    <div class="info-content">
+
+                        <span class="info-label">
+                            Adresse e-mail
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="emailValue"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        👤
+                    </div>
+
+                    <div class="info-content">
+
+                        <span class="info-label">
+                            Nom complet
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="fullNameValue"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        📅
+                    </div>
+
+                    <div class="info-content">
+
+                        <span class="info-label">
+                            Membre depuis
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="createdAtValue"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        🧠
+                    </div>
+
+                    <div class="info-content">
+
+                        <span class="info-label">
+                            Identifiant
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="idValue"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     MODALE MODIFIER PROFIL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="modalOverlay"
+>
+
+
+    <div class="modal">
+
+
+        <div class="modal-header">
+
+            <h2>
+                ✏️ Modifier mon profil
+            </h2>
+
+            <button
+                class="close-modal"
+                id="closeModal"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+
+        <div class="modal-group">
+
+            <label for="editFirstName">
+                Prénom
+            </label>
+
+            <input
+                type="text"
+                id="editFirstName"
+                class="modal-input"
+                maxlength="30"
+            >
+
+        </div>
+
+
+
+        <div class="modal-group">
+
+            <label for="editLastName">
+                Nom
+            </label>
+
+            <input
+                type="text"
+                id="editLastName"
+                class="modal-input"
+                maxlength="30"
+            >
+
+        </div>
+
+
+
+        <div class="modal-group">
+
+            <label for="editBio">
+                Bio
+            </label>
+
+            <textarea
+                id="editBio"
+                class="modal-textarea"
+                maxlength="150"
+                placeholder="Parle un peu de toi..."
+            ></textarea>
+
+        </div>
+
+
+
+        <div class="modal-actions">
+
+
+            <button
+                class="cancel-button"
+                id="cancelButton"
+            >
+                Annuler
+            </button>
+
+
+            <button
+                class="save-button"
+                id="saveButton"
+            >
+                💾 Enregistrer
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const profileAvatar =
+        document.getElementById(
+            "profileAvatar"
+        );
+
+
+    const profileName =
+        document.getElementById(
+            "profileName"
+        );
+
+
+    const profileUsername =
+        document.getElementById(
+            "profileUsername"
+        );
+
+
+    const profileBio =
+        document.getElementById(
+            "profileBio"
+        );
+
+
+    const emailValue =
+        document.getElementById(
+            "emailValue"
+        );
+
+
+    const fullNameValue =
+        document.getElementById(
+            "fullNameValue"
+        );
+
+
+    const createdAtValue =
+        document.getElementById(
+            "createdAtValue"
+        );
+
+
+    const idValue =
+        document.getElementById(
+            "idValue"
+        );
+
+
+    const pointsValue =
+        document.getElementById(
+            "pointsValue"
+        );
+
+
+    const debatesValue =
+        document.getElementById(
+            "debatesValue"
+        );
+
+
+    const votesValue =
+        document.getElementById(
+            "votesValue"
+        );
+
+
+    const levelValue =
+        document.getElementById(
+            "levelValue"
+        );
+
+
+    const debatesContainer =
+        document.getElementById(
+            "debatesContainer"
+        );
+
+
+    const debatesCountLabel =
+        document.getElementById(
+            "debatesCountLabel"
+        );
+
+
+    const editProfileButton =
+        document.getElementById(
+            "editProfileButton"
+        );
+
+
+    const logoutButton =
+        document.getElementById(
+            "logoutButton"
+        );
+
+
+    const logoutTopButton =
+        document.getElementById(
+            "logoutTopButton"
+        );
+
+
+    const modalOverlay =
+        document.getElementById(
+            "modalOverlay"
+        );
+
+
+    const closeModal =
+        document.getElementById(
+            "closeModal"
+        );
+
+
+    const cancelButton =
+        document.getElementById(
+            "cancelButton"
+        );
+
+
+    const saveButton =
+        document.getElementById(
+            "saveButton"
+        );
+
+
+    const editFirstName =
+        document.getElementById(
+            "editFirstName"
+        );
+
+
+    const editLastName =
+        document.getElementById(
+            "editLastName"
+        );
+
+
+    const editBio =
+        document.getElementById(
+            "editBio"
+        );
+
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+
+    /* =====================================================
+       UTILITAIRES
+    ===================================================== */
+
+    function getCurrentUser() {
+
+        try {
+
+            return JSON.parse(
+
+                localStorage.getItem(
+                    "mindbattleCurrentUser"
+                )
+
+            );
+
+        } catch (error) {
+
+            return null;
+
+        }
+
+    }
+
+
+
+    function getUsers() {
+
+        try {
+
+            return JSON.parse(
+
+                localStorage.getItem(
+                    "mindbattleUsers"
+                )
+
+            ) || [];
+
+        } catch (error) {
+
+            return [];
+
+        }
+
+    }
+
+
+
+    function getDebates() {
+
+        try {
+
+            return JSON.parse(
+
+                localStorage.getItem(
+                    "mindbattleDebates"
+                )
+
+            ) || [];
+
+        } catch (error) {
+
+            return [];
+
+        }
+
+    }
+
+
+
+    function saveUsers(users) {
+
+        localStorage.setItem(
+
+            "mindbattleUsers",
+
+            JSON.stringify(
+                users
+            )
+
+        );
+
+    }
+
+
+
+    function showToast(message) {
+
+        toast.textContent =
+            message;
+
+        toast.classList.add(
+            "show"
+        );
+
+
+        setTimeout(
+            function() {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2500
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SESSION
+    ===================================================== */
+
+    let currentUser =
+        getCurrentUser();
+
+
+
+    if (!currentUser) {
+
+        window.location.href =
+            "login.html";
+
+    }
+
+
+
+    /* =====================================================
+       NIVEAU
+    ===================================================== */
+
+    function calculateLevel(points) {
+
+        points =
+            Number(points)
+            ||
+            0;
+
+
+        if (points >= 1000) {
+
+            return "Légende";
+
+        }
+
+
+        if (points >= 500) {
+
+            return "Maître";
+
+        }
+
+
+        if (points >= 250) {
+
+            return "Expert";
+
+        }
+
+
+        if (points >= 100) {
+
+            return "Combattant";
+
+        }
+
+
+        return "Débutant";
+
+    }
+
+
+
+    /* =====================================================
+       FORMATER LA DATE
+    ===================================================== */
+
+    function formatDate(dateString) {
+
+        if (!dateString) {
+
+            return "Date inconnue";
+
+        }
+
+
+        const date =
+            new Date(
+                dateString
+            );
+
+
+        if (
+            Number.isNaN(
+                date.getTime()
+            )
+        ) {
+
+            return "Date inconnue";
+
+        }
+
+
+        return date.toLocaleDateString(
+
+            "fr-FR",
+
+            {
+
+                day:
+                    "numeric",
+
+                month:
+                    "long",
+
+                year:
+                    "numeric"
+
+            }
+
+        );
+
+    }
+
+
+
+    /* =====================================================
+       AFFICHER LES DEBATS
+    ===================================================== */
+
+    function renderMyDebates() {
+
+        if (!currentUser) {
+
+            return;
+
+        }
+
+
+        const allDebates =
+            getDebates();
+
+
+
+        const myDebates =
+            allDebates
+
+                .filter(
+                    function(debate) {
+
+                        return (
+
+                            debate.creatorId
+                            &&
+                            String(
+                                debate.creatorId
+                            )
+                            ===
+                            String(
+                                currentUser.id
+                            )
+
+                        );
+
+                    }
+                )
+
+                .sort(
+                    function(a, b) {
+
+                        return (
+
+                            new Date(
+                                b.createdAt
+                            )
+                            -
+                            new Date(
+                                a.createdAt
+                            )
+
+                        );
+
+                    }
+                );
+
+
+
+        debatesContainer.innerHTML =
+            "";
+
+
+
+        debatesCountLabel.textContent =
+
+            myDebates.length
+            +
+            (
+                myDebates.length > 1
+                ? " débats"
+                : " débat"
+            );
+
+
+
+        debatesValue.textContent =
+
+            myDebates.length;
+
+
+
+        if (
+            myDebates.length === 0
+        ) {
+
+            debatesContainer.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        💭
+                    </div>
+
+                    <h3>
+                        Aucun débat créé pour le moment
+                    </h3>
+
+                    <p>
+                        Lance ton premier débat
+                        et invite la communauté
+                        à défendre ses opinions.
+                    </p>
+
+                    <a
+                        href="create.html"
+                        class="create-debate-button"
+                    >
+                        ⚔️ Créer un débat
+                    </a>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        myDebates.forEach(
+            function(debate) {
+
+                const debateElement =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                debateElement.className =
+                    "debate-item";
+
+
+
+                const description =
+
+                    debate.description
+                    ||
+                    "Aucune description disponible.";
+
+
+
+                const votesFor =
+
+                    Number(
+                        debate.votesFor
+                    )
+                    ||
+                    0;
+
+
+
+                const votesAgainst =
+
+                    Number(
+                        debate.votesAgainst
+                    )
+                    ||
+                    0;
+
+
+
+                const views =
+
+                    Number(
+                        debate.views
+                    )
+                    ||
+                    0;
+
+
+
+                debateElement.innerHTML = `
+
+                    <div class="debate-item-top">
+
+                        <span class="debate-category">
+
+                            ${escapeHtml(
+                                debate.category
+                                ||
+                                "Autre"
+                            )}
+
+                        </span>
+
+                        <span class="debate-status">
+
+                            ● ${escapeHtml(
+                                debate.status
+                                ||
+                                "En cours"
+                            )}
+
+                        </span>
+
+                    </div>
+
+
+                    <h3 class="debate-title">
+
+                        ${escapeHtml(
+                            debate.title
+                            ||
+                            "Débat sans titre"
+                        )}
+
+                    </h3>
+
+
+                    <p class="debate-description">
+
+                        ${escapeHtml(
+                            description
+                        )}
+
+                    </p>
+
+
+                    <div class="debate-meta">
+
+
+                        <div class="debate-stats">
+
+                            <span>
+                                👁️ ${views}
+                            </span>
+
+                            <span>
+                                🟢 ${votesFor}
+                            </span>
+
+                            <span>
+                                🔴 ${votesAgainst}
+                            </span>
+
+                            <span>
+                                📅 ${formatDate(
+                                    debate.createdAt
+                                )}
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="debate.html?id=${encodeURIComponent(
+                                debate.id
+                            )}"
+                            class="view-debate-button"
+                        >
+                            Voir le débat →
+                        </a>
+
+
+                    </div>
+
+                `;
+
+
+
+                debatesContainer.appendChild(
+                    debateElement
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SECURISER LE TEXTE
+    ===================================================== */
+
+    function escapeHtml(value) {
+
+        return String(value)
+
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+
+            .replace(
+                /</g,
+                "&lt;"
+            )
+
+            .replace(
+                />/g,
+                "&gt;"
+            )
+
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+
+    /* =====================================================
+       AFFICHER LE PROFIL
+    ===================================================== */
+
+    function renderProfile() {
+
+        if (!currentUser) {
+
+            return;
+
+        }
+
+
+
+        profileAvatar.childNodes[0].textContent =
+
+            currentUser.avatar
+            ||
+            "🧠";
+
+
+
+        const firstName =
+
+            currentUser.firstName
+            ||
+            "";
+
+
+
+        const lastName =
+
+            currentUser.lastName
+            ||
+            "";
+
+
+
+        const fullName =
+
+            (
+                firstName
+                +
+                " "
+                +
+                lastName
+            )
+            .trim()
+            ||
+            "Utilisateur";
+
+
+
+        profileName.textContent =
+            fullName;
+
+
+
+        profileUsername.textContent =
+
+            "@"
+            +
+            (
+                currentUser.username
+                ||
+                "utilisateur"
+            );
+
+
+
+        profileBio.textContent =
+
+            currentUser.bio
+            ||
+            "Nouveau membre de MindBattle.";
+
+
+
+        emailValue.textContent =
+
+            currentUser.email
+            ||
+            "—";
+
+
+
+        fullNameValue.textContent =
+
+            fullName;
+
+
+
+        idValue.textContent =
+
+            currentUser.id
+            ||
+            "—";
+
+
+
+        pointsValue.textContent =
+
+            Number(
+                currentUser.points
+            )
+            ||
+            0;
+
+
+
+        votesValue.textContent =
+
+            Number(
+                currentUser.votes
+            )
+            ||
+            0;
+
+
+
+        levelValue.textContent =
+
+            calculateLevel(
+                currentUser.points
+            );
+
+
+
+        createdAtValue.textContent =
+
+            formatDate(
+                currentUser.createdAt
+            );
+
+
+
+        renderMyDebates();
+
+    }
+
+
+
+    renderProfile();
+
+
+
+    /* =====================================================
+       OUVRIR MODALE
+    ===================================================== */
+
+    editProfileButton.addEventListener(
+
+        "click",
+
+        function() {
+
+
+            editFirstName.value =
+
+                currentUser.firstName
+                ||
+                "";
+
+
+            editLastName.value =
+
+                currentUser.lastName
+                ||
+                "";
+
+
+            editBio.value =
+
+                currentUser.bio
+                ||
+                "";
+
+
+            modalOverlay.classList.add(
+                "active"
+            );
+
+        }
+
+    );
+
+
+
+    /* =====================================================
+       FERMER MODALE
+    ===================================================== */
+
+    function closeEditModal() {
+
+        modalOverlay.classList.remove(
+            "active"
+        );
+
+    }
+
+
+
+    closeModal.addEventListener(
+
+        "click",
+
+        closeEditModal
+
+    );
+
+
+    cancelButton.addEventListener(
+
+        "click",
+
+        closeEditModal
+
+    );
+
+
+
+    modalOverlay.addEventListener(
+
+        "click",
+
+        function(event) {
+
+            if (
+                event.target
+                ===
+                modalOverlay
+            ) {
+
+                closeEditModal();
+
+            }
+
+        }
+
+    );
+
+
+
+    /* =====================================================
+       ENREGISTRER MODIFICATIONS
+    ===================================================== */
+
+    saveButton.addEventListener(
+
+        "click",
+
+        function() {
+
+
+            const newFirstName =
+
+                editFirstName.value
+                    .trim();
+
+
+            const newLastName =
+
+                editLastName.value
+                    .trim();
+
+
+            const newBio =
+
+                editBio.value
+                    .trim();
+
+
+
+            if (
+
+                newFirstName.length < 2
+
+                ||
+
+                newLastName.length < 2
+
+            ) {
+
+
+                showToast(
+
+                    "⚠️ Le prénom et le nom doivent contenir au moins 2 caractères."
+
+                );
+
+
+                return;
+
+            }
+
+
+
+            currentUser.firstName =
+
+                newFirstName;
+
+
+            currentUser.lastName =
+
+                newLastName;
+
+
+            currentUser.bio =
+
+                newBio
+                ||
+                "Nouveau membre de MindBattle.";
+
+
+
+            const users =
+                getUsers();
+
+
+
+            const userIndex =
+
+                users.findIndex(
+
+                    function(user) {
+
+                        return (
+
+                            user.id
+                            ===
+                            currentUser.id
+
+                        );
+
+                    }
+
+                );
+
+
+
+            if (
+                userIndex !== -1
+            ) {
+
+                users[userIndex] =
+                    currentUser;
+
+
+                saveUsers(
+                    users
+                );
+
+            }
+
+
+
+            localStorage.setItem(
+
+                "mindbattleCurrentUser",
+
+                JSON.stringify(
+                    currentUser
+                )
+
+            );
+
+
+
+            renderProfile();
+
+
+            closeEditModal();
+
+
+            showToast(
+
+                "✅ Ton profil a été mis à jour !"
+
+            );
+
+        }
+
+    );
+
+
+
+    /* =====================================================
+       DECONNEXION
+    ===================================================== */
+
+    function logout() {
+
+
+        const confirmation =
+
+            confirm(
+
+                "Veux-tu vraiment te déconnecter de MindBattle ?"
+
+            );
+
+
+
+        if (!confirmation) {
+
+            return;
+
+        }
+
+
+
+        localStorage.removeItem(
+
+            "mindbattleCurrentUser"
+
+        );
+
+
+
+        window.location.href =
+            "login.html";
+
+    }
+
+
+
+    logoutButton.addEventListener(
+
+        "click",
+
+        logout
+
+    );
+
+
+    logoutTopButton.addEventListener(
+
+        "click",
+
+        logout
+
+    );
+
+
+
+</script>
+```
+
+</body>
+
+</html>

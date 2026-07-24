@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Connexion — MindBattle</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px 18px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #f8fafc;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(
+                        124,
+                        58,
+                        237,
+                        0.25
+                    ),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(
+                        147,
+                        51,
+                        234,
+                        0.18
+                    ),
+                    transparent 35%
+                ),
+
+                #070a12;
+
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .login-container {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            min-height: 650px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.1fr
+                0.9fr;
+
+            overflow: hidden;
+
+            background:
+                rgba(
+                    13,
+                    16,
+                    26,
+                    0.96
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+            border-radius:
+                28px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.45
+                );
+
+        }
+
+
+        /* =====================================================
+           PARTIE GAUCHE
+        ===================================================== */
+
+        .login-form-section {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                45px;
+
+            background:
+                #0d101a;
+
+        }
+
+
+        .login-form-wrapper {
+
+            width: 100%;
+
+            max-width:
+                420px;
+
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom:
+                45px;
+
+        }
+
+
+        .logo-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius:
+                14px;
+
+            font-size:
+                24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.35
+                );
+
+        }
+
+
+        .logo-name {
+
+            font-size:
+                24px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .form-header {
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        .form-header h1 {
+
+            margin-bottom:
+                10px;
+
+            font-size:
+                30px;
+
+            line-height:
+                1.2;
+
+        }
+
+
+        .form-header p {
+
+            color:
+                #64748b;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        .form-message {
+
+            display:
+                none;
+
+            padding:
+                13px 15px;
+
+            margin-bottom:
+                18px;
+
+            border-radius:
+                10px;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        .form-message.error {
+
+            display:
+                block;
+
+            color:
+                #fca5a5;
+
+            background:
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.10
+                );
+
+            border:
+                1px solid
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.22
+                );
+
+        }
+
+
+        .form-message.success {
+
+            display:
+                block;
+
+            color:
+                #86efac;
+
+            background:
+                rgba(
+                    34,
+                    197,
+                    94,
+                    0.10
+                );
+
+            border:
+                1px solid
+                rgba(
+                    34,
+                    197,
+                    94,
+                    0.22
+                );
+
+        }
+
+
+        /* =====================================================
+           FORMULAIRE
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .form-group label {
+
+            display:
+                block;
+
+            margin-bottom:
+                8px;
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .input-wrapper {
+
+            position:
+                relative;
+
+        }
+
+
+        .form-input {
+
+            width:
+                100%;
+
+            height:
+                50px;
+
+            padding:
+                0 15px;
+
+            color:
+                #ffffff;
+
+            background:
+                #111522;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+            border-radius:
+                11px;
+
+            outline:
+                none;
+
+            font-size:
+                13px;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .form-input::placeholder {
+
+            color:
+                #475569;
+
+        }
+
+
+        .form-input:focus {
+
+            border-color:
+                #8b5cf6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.12
+                );
+
+        }
+
+
+        .form-input.input-error {
+
+            border-color:
+                #ef4444;
+
+        }
+
+
+        .password-input {
+
+            padding-right:
+                50px;
+
+        }
+
+
+        /* =====================================================
+           TOGGLE PASSWORD
+        ===================================================== */
+
+        .toggle-password {
+
+            position:
+                absolute;
+
+            top:
+                50%;
+
+            right:
+                10px;
+
+            transform:
+                translateY(
+                    -50%
+                );
+
+            width:
+                34px;
+
+            height:
+                34px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                #64748b;
+
+            background:
+                transparent;
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            cursor:
+                pointer;
+
+            font-size:
+                16px;
+
+        }
+
+
+        .toggle-password:hover {
+
+            color:
+                #c4b5fd;
+
+            background:
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.10
+                );
+
+        }
+
+
+        /* =====================================================
+           OPTIONS
+        ===================================================== */
+
+        .form-options {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                15px;
+
+            margin:
+                -3px 0 22px;
+
+        }
+
+
+        .remember {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            color:
+                #64748b;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .remember input {
+
+            width:
+                15px;
+
+            height:
+                15px;
+
+            accent-color:
+                #7c3aed;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .forgot-password {
+
+            color:
+                #a78bfa;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .forgot-password:hover {
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        /* =====================================================
+           BOUTON
+        ===================================================== */
+
+        .submit-button {
+
+            width:
+                100%;
+
+            height:
+                50px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                8px;
+
+            color:
+                #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            border:
+                none;
+
+            border-radius:
+                11px;
+
+            cursor:
+                pointer;
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.22
+                );
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .submit-button:hover {
+
+            transform:
+                translateY(
+                    -2px
+                );
+
+            box-shadow:
+                0 15px 30px
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.35
+                );
+
+        }
+
+
+        .submit-button:disabled {
+
+            opacity:
+                0.65;
+
+            cursor:
+                not-allowed;
+
+            transform:
+                none;
+
+        }
+
+
+        /* =====================================================
+           SEPARATEUR
+        ===================================================== */
+
+        .separator {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+            margin:
+                25px 0;
+
+            color:
+                #475569;
+
+            font-size:
+                10px;
+
+        }
+
+
+        .separator::before,
+        .separator::after {
+
+            content:
+                "";
+
+            flex:
+                1;
+
+            height:
+                1px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.07
+                );
+
+        }
+
+
+        /* =====================================================
+           CREATION COMPTE
+        ===================================================== */
+
+        .register-link {
+
+            text-align:
+                center;
+
+            color:
+                #64748b;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .register-link a {
+
+            color:
+                #a78bfa;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .register-link a:hover {
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        /* =====================================================
+           RETOUR
+        ===================================================== */
+
+        .back-home-wrapper {
+
+            margin-top:
+                22px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .back-home {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+
+            color:
+                #475569;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .back-home:hover {
+
+            color:
+                #a78bfa;
+
+        }
+
+
+        /* =====================================================
+           PARTIE DROITE
+        ===================================================== */
+
+        .login-visual {
+
+            position:
+                relative;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+            padding:
+                45px;
+
+            overflow:
+                hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 15%,
+                    rgba(
+                        124,
+                        58,
+                        237,
+                        0.32
+                    ),
+                    transparent 38%
+                ),
+
+                radial-gradient(
+                    circle at 20% 85%,
+                    rgba(
+                        147,
+                        51,
+                        234,
+                        0.20
+                    ),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    145deg,
+                    #161025,
+                    #0d101a
+                );
+
+        }
+
+
+        .login-visual::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                300px;
+
+            height:
+                300px;
+
+            top:
+                -120px;
+
+            right:
+                -100px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    139,
+                    92,
+                    246,
+                    0.12
+                );
+
+            filter:
+                blur(
+                    10px
+                );
+
+        }
+
+
+        .visual-top {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+        }
+
+
+        .visual-badge {
+
+            display:
+                inline-flex;
+
+            padding:
+                8px 13px;
+
+            margin-bottom:
+                20px;
+
+            color:
+                #c4b5fd;
+
+            background:
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.14
+                );
+
+            border:
+                1px solid
+                rgba(
+                    139,
+                    92,
+                    246,
+                    0.22
+                );
+
+            border-radius:
+                999px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .visual-top h2 {
+
+            max-width:
+                400px;
+
+            margin-bottom:
+                18px;
+
+            font-size:
+                42px;
+
+            line-height:
+                1.1;
+
+        }
+
+
+        .visual-top h2 span {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #a78bfa,
+                    #c084fc
+                );
+
+            background-clip:
+                text;
+
+            -webkit-background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+
+        }
+
+
+        .visual-top p {
+
+            max-width:
+                400px;
+
+            color:
+                #94a3b8;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.8;
+
+        }
+
+
+        /* =====================================================
+           CARTE DEBAT
+        ===================================================== */
+
+        .battle-card {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            padding:
+                22px;
+
+            background:
+                rgba(
+                    13,
+                    16,
+                    26,
+                    0.75
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+            border-radius:
+                18px;
+
+            backdrop-filter:
+                blur(
+                    15px
+                );
+
+            box-shadow:
+                0 20px 50px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
+
+        }
+
+
+        .battle-label {
+
+            display:
+                inline-block;
+
+            margin-bottom:
+                12px;
+
+            color:
+                #a78bfa;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .battle-card h3 {
+
+            margin-bottom:
+                18px;
+
+            font-size:
+                17px;
+
+            line-height:
+                1.4;
+
+        }
+
+
+        .battle-players {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
+
+        }
+
+
+        .player {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .player-avatar {
+
+            width:
+                34px;
+
+            height:
+                34px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                10px;
+
+            background:
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.15
+                );
+
+            font-size:
+                17px;
+
+        }
+
+
+        .vs {
+
+            color:
+                #7c3aed;
+
+            font-size:
+                11px;
+
+            font-weight:
+                900;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (
+            max-width: 850px
+        ) {
+
+            .login-container {
+
+                grid-template-columns:
+                    1fr;
+
+                max-width:
+                    550px;
+
+            }
+
+
+            .login-visual {
+
+                min-height:
+                    400px;
+
+                order:
+                    -1;
+
+            }
+
+
+            .battle-card {
+
+                display:
+                    none;
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 500px
+        ) {
+
+            body {
+
+                padding:
+                    0;
+
+            }
+
+
+            .login-container {
+
+                min-height:
+                    100vh;
+
+                border:
+                    none;
+
+                border-radius:
+                    0;
+
+            }
+
+
+            .login-form-section {
+
+                padding:
+                    35px 22px;
+
+            }
+
+
+            .login-visual {
+
+                min-height:
+                    300px;
+
+                padding:
+                    30px 22px;
+
+            }
+
+
+            .logo {
+
+                margin-bottom:
+                    25px;
+
+            }
+
+
+            .visual-top h2 {
+
+                font-size:
+                    34px;
+
+            }
+
+
+            .form-options {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="login-container">
+
+
+        <!-- =================================================
+             FORMULAIRE DE CONNEXION
+        ================================================== -->
+
+        <section class="login-form-section">
+
+
+            <div class="login-form-wrapper">
+
+
+                <!-- LOGO -->
+
+                <a
+                    href="index.html"
+                    class="logo"
+                >
+
+                    <div class="logo-icon">
+                        🧠
+                    </div>
+
+                    <span class="logo-name">
+                        MindBattle
+                    </span>
+
+                </a>
+
+
+
+                <!-- HEADER -->
+
+                <div class="form-header">
+
+                    <h1>
+                        Bon retour 👋
+                    </h1>
+
+                    <p>
+                        Connecte-toi à ton compte
+                        et retourne dans l'arène
+                        des débats.
+                    </p>
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="formMessage"
+                    class="form-message"
+                ></div>
+
+
+
+                <!-- FORMULAIRE -->
+
+                <form
+                    id="loginForm"
+                    novalidate
+                >
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Adresse e-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-input"
+                            placeholder="exemple@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- MOT DE PASSE -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Mot de passe
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+
+                            <input
+                                type="password"
+                                id="password"
+                                class="form-input password-input"
+                                placeholder="Ton mot de passe"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="togglePassword"
+                                aria-label="Afficher le mot de passe"
+                            >
+                                👁️
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- OPTIONS -->
+
+                    <div class="form-options">
+
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="remember"
+                            >
+
+                            <span>
+                                Se souvenir de moi
+                            </span>
+
+                        </label>
+
+
+                        <a
+                            href="#"
+                            class="forgot-password"
+                            id="forgotPassword"
+                        >
+                            Mot de passe oublié ?
+                        </a>
+
+
+                    </div>
+
+
+
+                    <!-- BOUTON -->
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                        id="submitButton"
+                    >
+
+                        <span>
+                            🔐
+                        </span>
+
+                        Se connecter
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- SEPARATEUR -->
+
+                <div class="separator">
+                    OU
+                </div>
+
+
+
+                <!-- CREATION -->
+
+                <div class="register-link">
+
+                    Tu n'as pas encore de compte ?
+
+                    <a href="register.html">
+                        Créer un compte
+                    </a>
+
+                </div>
+
+
+
+                <!-- RETOUR -->
+
+                <div class="back-home-wrapper">
+
+                    <a
+                        href="index.html"
+                        class="back-home"
+                    >
+                        ← Retour à l'accueil
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PARTIE VISUELLE
+        ================================================== -->
+
+        <section class="login-visual">
+
+
+            <div class="visual-top">
+
+
+                <span class="visual-badge">
+                    ⚔️ BIENVENUE DANS L'ARÈNE
+                </span>
+
+
+                <h2>
+
+                    Les idées
+                    <span>
+                        s'affrontent.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Reviens défendre tes opinions,
+                    découvrir de nouveaux débats et
+                    affronter des arguments qui
+                    pourraient changer ta façon de penser.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- CARTE -->
+
+            <div class="battle-card">
+
+
+                <span class="battle-label">
+                    🔥 Débat populaire
+                </span>
+
+
+                <h3>
+                    L'intelligence artificielle
+                    va-t-elle changer le monde ?
+                </h3>
+
+
+                <div class="battle-players">
+
+
+                    <div class="player">
+
+                        <span class="player-avatar">
+                            🧠
+                        </span>
+
+                        <span>
+                            Team Pour
+                        </span>
+
+                    </div>
+
+
+                    <span class="vs">
+                        VS
+                    </span>
+
+
+                    <div class="player">
+
+                        <span class="player-avatar">
+                            ⚔️
+                        </span>
+
+                        <span>
+                            Team Contre
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+
+        const emailInput =
+            document.getElementById(
+                "email"
+            );
+
+
+        const passwordInput =
+            document.getElementById(
+                "password"
+            );
+
+
+        const rememberInput =
+            document.getElementById(
+                "remember"
+            );
+
+
+        const formMessage =
+            document.getElementById(
+                "formMessage"
+            );
+
+
+        const submitButton =
+            document.getElementById(
+                "submitButton"
+            );
+
+
+        const togglePassword =
+            document.getElementById(
+                "togglePassword"
+            );
+
+
+        const forgotPassword =
+            document.getElementById(
+                "forgotPassword"
+            );
+
+
+
+        /* =====================================================
+           AFFICHER / MASQUER MOT DE PASSE
+        ===================================================== */
+
+        togglePassword.addEventListener(
+            "click",
+            function() {
+
+
+                if (
+                    passwordInput.type ===
+                    "password"
+                ) {
+
+
+                    passwordInput.type =
+                        "text";
+
+
+                    togglePassword.textContent =
+                        "🙈";
+
+
+                    togglePassword.setAttribute(
+                        "aria-label",
+                        "Masquer le mot de passe"
+                    );
+
+
+                } else {
+
+
+                    passwordInput.type =
+                        "password";
+
+
+                    togglePassword.textContent =
+                        "👁️";
+
+
+                    togglePassword.setAttribute(
+                        "aria-label",
+                        "Afficher le mot de passe"
+                    );
+
+
+                }
+
+
+            }
+        );
+
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        function showMessage(
+            message,
+            type
+        ) {
+
+
+            formMessage.textContent =
+                message;
+
+
+            formMessage.className =
+                "form-message " +
+                type;
+
+
+        }
+
+
+
+        /* =====================================================
+           EFFACER MESSAGE
+        ===================================================== */
+
+        function clearMessage() {
+
+
+            formMessage.textContent =
+                "";
+
+
+            formMessage.className =
+                "form-message";
+
+
+        }
+
+
+
+        /* =====================================================
+           VERIFICATION SESSION EXISTANTE
+        ===================================================== */
+
+        const currentUser =
+            localStorage.getItem(
+                "mindbattleCurrentUser"
+            );
+
+
+        /*
+           On ne redirige pas automatiquement
+           ici afin de laisser l'utilisateur
+           voir la page de connexion.
+        */
+
+
+
+        /* =====================================================
+           CONNEXION
+        ===================================================== */
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+
+                event.preventDefault();
+
+
+                clearMessage();
+
+
+
+                const email =
+                    emailInput.value
+                        .trim()
+                        .toLowerCase();
+
+
+                const password =
+                    passwordInput.value;
+
+
+
+                /* VALIDATION */
+
+                if (
+                    email === ""
+                    ||
+                    password === ""
+                ) {
+
+
+                    showMessage(
+                        "Veuillez remplir tous les champs.",
+                        "error"
+                    );
+
+
+                    return;
+
+
+                }
+
+
+
+                /* RECUPERER LES UTILISATEURS */
+
+                const users =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "mindbattleUsers"
+                        )
+                    ) || [];
+
+
+
+                /* RECHERCHER LE COMPTE */
+
+                const user =
+                    users.find(
+                        account =>
+
+                            account.email
+                                .toLowerCase()
+
+                            ===
+
+                            email
+
+                    );
+
+
+
+                /* COMPTE INEXISTANT */
+
+                if (
+                    !user
+                ) {
+
+
+                    showMessage(
+                        "Aucun compte ne correspond à cette adresse e-mail.",
+                        "error"
+                    );
+
+
+                    emailInput.classList.add(
+                        "input-error"
+                    );
+
+
+                    return;
+
+
+                }
+
+
+
+                /* MAUVAIS MOT DE PASSE */
+
+                if (
+                    user.password !==
+                    password
+                ) {
+
+
+                    showMessage(
+                        "Le mot de passe est incorrect.",
+                        "error"
+                    );
+
+
+                    passwordInput.classList.add(
+                        "input-error"
+                    );
+
+
+                    return;
+
+
+                }
+
+
+
+                /* CONNEXION REUSSIE */
+
+                localStorage.setItem(
+
+                    "mindbattleCurrentUser",
+
+                    JSON.stringify(
+                        user
+                    )
+
+                );
+
+
+
+                /* SOUVENIR DE MOI */
+
+                if (
+                    rememberInput.checked
+                ) {
+
+
+                    localStorage.setItem(
+
+                        "mindbattleRemember",
+
+                        "true"
+
+                    );
+
+
+                } else {
+
+
+                    localStorage.removeItem(
+
+                        "mindbattleRemember"
+
+                    );
+
+
+                }
+
+
+
+                /* MESSAGE */
+
+                showMessage(
+
+                    "🎉 Connexion réussie ! Bienvenue " +
+                    user.firstName +
+                    " !",
+
+                    "success"
+
+                );
+
+
+
+                /* BOUTON */
+
+                submitButton.disabled =
+                    true;
+
+
+                submitButton.innerHTML =
+                    "✓ Connexion réussie !";
+
+
+
+                /* REDIRECTION */
+
+                setTimeout(
+                    function() {
+
+
+                        window.location.href =
+                            "profile.html";
+
+
+                    },
+                    1000
+                );
+
+
+            }
+        );
+
+
+
+        /* =====================================================
+           RETIRER LES ERREURS LORS DE LA SAISIE
+        ===================================================== */
+
+        emailInput.addEventListener(
+            "input",
+            function() {
+
+
+                this.classList.remove(
+                    "input-error"
+                );
+
+
+                clearMessage();
+
+
+            }
+        );
+
+
+        passwordInput.addEventListener(
+            "input",
+            function() {
+
+
+                this.classList.remove(
+                    "input-error"
+                );
+
+
+                clearMessage();
+
+
+            }
+        );
+
+
+
+        /* =====================================================
+           MOT DE PASSE OUBLIE
+        ===================================================== */
+
+        forgotPassword.addEventListener(
+            "click",
+            function(event) {
+
+
+                event.preventDefault();
+
+
+                showMessage(
+
+                    "La récupération du mot de passe sera disponible prochainement.",
+
+                    "error"
+
+                );
+
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

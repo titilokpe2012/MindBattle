@@ -1,0 +1,2731 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Créer un débat — MindBattle</title>
+
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        min-height: 100vh;
+
+        color: #f8fafc;
+
+        background:
+
+            radial-gradient(
+                circle at top left,
+                rgba(124, 58, 237, 0.20),
+                transparent 35%
+            ),
+
+            radial-gradient(
+                circle at bottom right,
+                rgba(147, 51, 234, 0.12),
+                transparent 30%
+            ),
+
+            #070a12;
+
+    }
+
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+
+    button,
+    input,
+    textarea,
+    select {
+        font-family: inherit;
+    }
+
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .top-bar {
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 1000;
+
+        height: 72px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 0 6%;
+
+        background:
+            rgba(
+                7,
+                10,
+                18,
+                0.88
+            );
+
+        backdrop-filter:
+            blur(18px);
+
+        border-bottom:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.08
+            );
+
+    }
+
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .logo {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        font-size: 22px;
+
+        font-weight: 800;
+
+    }
+
+
+    .logo-icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 12px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        box-shadow:
+            0 8px 25px
+            rgba(
+                124,
+                58,
+                237,
+                0.35
+            );
+
+    }
+
+
+    .logo-text {
+
+        background:
+            linear-gradient(
+                90deg,
+                #ffffff,
+                #c4b5fd
+            );
+
+        -webkit-background-clip:
+            text;
+
+        -webkit-text-fill-color:
+            transparent;
+
+    }
+
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .main-nav {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+    }
+
+
+    .nav-link {
+
+        padding:
+            10px 15px;
+
+        color:
+            #94a3b8;
+
+        border-radius:
+            10px;
+
+        font-size:
+            14px;
+
+        font-weight:
+            600;
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .nav-link:hover {
+
+        color:
+            #ffffff;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            );
+
+    }
+
+
+    .nav-link.active {
+
+        color:
+            #ffffff;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.18
+            );
+
+    }
+
+
+
+    /* =====================================================
+       ACTIONS NAVIGATION
+    ===================================================== */
+
+    .nav-actions {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            10px;
+
+    }
+
+
+    .user-name-nav {
+
+        color:
+            #c4b5fd;
+
+        font-size:
+            12px;
+
+        font-weight:
+            700;
+
+    }
+
+
+    .logout-button {
+
+        padding:
+            9px 14px;
+
+        color:
+            #fca5a5;
+
+        background:
+            rgba(
+                239,
+                68,
+                68,
+                0.08
+            );
+
+        border:
+            1px solid
+            rgba(
+                239,
+                68,
+                68,
+                0.18
+            );
+
+        border-radius:
+            9px;
+
+        cursor:
+            pointer;
+
+        font-size:
+            11px;
+
+        font-weight:
+            700;
+
+    }
+
+
+    .logout-button:hover {
+
+        background:
+            rgba(
+                239,
+                68,
+                68,
+                0.15
+            );
+
+    }
+
+
+
+    /* =====================================================
+       PAGE
+    ===================================================== */
+
+    .page-container {
+
+        width:
+            min(
+                100%,
+                900px
+            );
+
+        margin:
+            0 auto;
+
+        padding:
+            55px 24px 90px;
+
+    }
+
+
+
+    /* =====================================================
+       BACK
+    ===================================================== */
+
+    .back-link {
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        gap:
+            8px;
+
+        margin-bottom:
+            28px;
+
+        color:
+            #94a3b8;
+
+        font-size:
+            14px;
+
+        font-weight:
+            600;
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .back-link:hover {
+
+        color:
+            #c4b5fd;
+
+    }
+
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .page-header {
+
+        text-align:
+            center;
+
+        margin-bottom:
+            35px;
+
+    }
+
+
+    .page-badge {
+
+        display:
+            inline-flex;
+
+        padding:
+            8px 14px;
+
+        margin-bottom:
+            15px;
+
+        color:
+            #c4b5fd;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.14
+            );
+
+        border:
+            1px solid
+            rgba(
+                139,
+                92,
+                246,
+                0.20
+            );
+
+        border-radius:
+            999px;
+
+        font-size:
+            12px;
+
+        font-weight:
+            800;
+
+    }
+
+
+    .page-header h1 {
+
+        margin-bottom:
+            12px;
+
+        font-size:
+            clamp(
+                30px,
+                5vw,
+                46px
+            );
+
+        line-height:
+            1.15;
+
+    }
+
+
+    .page-header p {
+
+        max-width:
+            600px;
+
+        margin:
+            0 auto;
+
+        color:
+            #94a3b8;
+
+        font-size:
+            15px;
+
+        line-height:
+            1.7;
+
+    }
+
+
+
+    /* =====================================================
+       FORM CARD
+    ===================================================== */
+
+    .form-card {
+
+        padding:
+            35px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(
+                    22,
+                    26,
+                    39,
+                    0.96
+                ),
+                rgba(
+                    13,
+                    16,
+                    26,
+                    0.96
+                )
+            );
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            );
+
+        border-radius:
+            24px;
+
+        box-shadow:
+            0 25px 80px
+            rgba(
+                0,
+                0,
+                0,
+                0.25
+            );
+
+    }
+
+
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .form-group {
+
+        margin-bottom:
+            25px;
+
+    }
+
+
+    .form-label {
+
+        display:
+            block;
+
+        margin-bottom:
+            9px;
+
+        color:
+            #f8fafc;
+
+        font-size:
+            14px;
+
+        font-weight:
+            700;
+
+    }
+
+
+    .required {
+
+        color:
+            #c084fc;
+
+    }
+
+
+    .form-help {
+
+        margin-top:
+            7px;
+
+        color:
+            #64748b;
+
+        font-size:
+            12px;
+
+        line-height:
+            1.5;
+
+    }
+
+
+
+    /* =====================================================
+       INPUTS
+    ===================================================== */
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+
+        width:
+            100%;
+
+        padding:
+            14px 16px;
+
+        color:
+            #ffffff;
+
+        background:
+            #070a12;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.09
+            );
+
+        border-radius:
+            12px;
+
+        outline:
+            none;
+
+        font-size:
+            14px;
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+
+        color:
+            #475569;
+
+    }
+
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+
+        border-color:
+            #7c3aed;
+
+        box-shadow:
+            0 0 0 4px
+            rgba(
+                124,
+                58,
+                237,
+                0.10
+            );
+
+    }
+
+
+    .form-select {
+
+        cursor:
+            pointer;
+
+    }
+
+
+    .form-select option {
+
+        color:
+            #ffffff;
+
+        background:
+            #111522;
+
+    }
+
+
+    .form-textarea {
+
+        min-height:
+            150px;
+
+        resize:
+            vertical;
+
+        line-height:
+            1.7;
+
+    }
+
+
+
+    /* =====================================================
+       ARGUMENTS
+    ===================================================== */
+
+    .arguments-title {
+
+        margin:
+            35px 0 20px;
+
+        padding-top:
+            25px;
+
+        border-top:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            );
+
+    }
+
+
+    .arguments-title h2 {
+
+        margin-bottom:
+            7px;
+
+        font-size:
+            21px;
+
+    }
+
+
+    .arguments-title p {
+
+        color:
+            #64748b;
+
+        font-size:
+            13px;
+
+    }
+
+
+    .arguments-grid {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        gap:
+            18px;
+
+    }
+
+
+    .argument-box {
+
+        padding:
+            20px;
+
+        border-radius:
+            16px;
+
+        background:
+            #0d101a;
+
+    }
+
+
+    .argument-box.for {
+
+        border:
+            1px solid
+            rgba(
+                34,
+                197,
+                94,
+                0.20
+            );
+
+    }
+
+
+    .argument-box.against {
+
+        border:
+            1px solid
+            rgba(
+                239,
+                68,
+                68,
+                0.20
+            );
+
+    }
+
+
+    .argument-box .form-label {
+
+        margin-bottom:
+            12px;
+
+    }
+
+
+    .argument-box.for .form-label {
+
+        color:
+            #86efac;
+
+    }
+
+
+    .argument-box.against .form-label {
+
+        color:
+            #fca5a5;
+
+    }
+
+
+
+    /* =====================================================
+       PREVIEW
+    ===================================================== */
+
+    .preview-section {
+
+        margin-top:
+            30px;
+
+        padding-top:
+            25px;
+
+        border-top:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            );
+
+    }
+
+
+    .preview-section h2 {
+
+        margin-bottom:
+            18px;
+
+        font-size:
+            20px;
+
+    }
+
+
+    .preview-card {
+
+        padding:
+            22px;
+
+        background:
+            #0d101a;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            );
+
+        border-radius:
+            16px;
+
+    }
+
+
+    .preview-category {
+
+        display:
+            inline-block;
+
+        padding:
+            6px 10px;
+
+        margin-bottom:
+            12px;
+
+        color:
+            #c4b5fd;
+
+        background:
+            rgba(
+                124,
+                58,
+                237,
+                0.14
+            );
+
+        border-radius:
+            7px;
+
+        font-size:
+            10px;
+
+        font-weight:
+            800;
+
+        text-transform:
+            uppercase;
+
+    }
+
+
+    .preview-card h3 {
+
+        margin-bottom:
+            10px;
+
+        font-size:
+            19px;
+
+    }
+
+
+    .preview-card p {
+
+        color:
+            #64748b;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.6;
+
+    }
+
+
+
+    /* =====================================================
+       ACTIONS FORMULAIRE
+    ===================================================== */
+
+    .form-actions {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            flex-end;
+
+        gap:
+            12px;
+
+        margin-top:
+            30px;
+
+        padding-top:
+            25px;
+
+        border-top:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.07
+            );
+
+    }
+
+
+    .cancel-button {
+
+        padding:
+            13px 20px;
+
+        color:
+            #94a3b8;
+
+        background:
+            transparent;
+
+        border:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.10
+            );
+
+        border-radius:
+            10px;
+
+        cursor:
+            pointer;
+
+        font-size:
+            14px;
+
+        font-weight:
+            700;
+
+    }
+
+
+    .cancel-button:hover {
+
+        color:
+            #ffffff;
+
+        background:
+            rgba(
+                255,
+                255,
+                255,
+                0.05
+            );
+
+    }
+
+
+    .submit-button {
+
+        min-width:
+            180px;
+
+        padding:
+            14px 22px;
+
+        color:
+            #ffffff;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        border:
+            none;
+
+        border-radius:
+            10px;
+
+        cursor:
+            pointer;
+
+        font-size:
+            14px;
+
+        font-weight:
+            800;
+
+        box-shadow:
+            0 10px 30px
+            rgba(
+                124,
+                58,
+                237,
+                0.25
+            );
+
+        transition:
+            0.25s ease;
+
+    }
+
+
+    .submit-button:hover {
+
+        transform:
+            translateY(
+                -2px
+            );
+
+    }
+
+
+    .submit-button:disabled {
+
+        opacity:
+            0.6;
+
+        cursor:
+            not-allowed;
+
+        transform:
+            none;
+
+    }
+
+
+
+    /* =====================================================
+       MESSAGE
+    ===================================================== */
+
+    .form-message {
+
+        display:
+            none;
+
+        margin-top:
+            20px;
+
+        padding:
+            13px 15px;
+
+        border-radius:
+            10px;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    .form-message.error {
+
+        display:
+            block;
+
+        color:
+            #fca5a5;
+
+        background:
+            rgba(
+                239,
+                68,
+                68,
+                0.10
+            );
+
+        border:
+            1px solid
+            rgba(
+                239,
+                68,
+                68,
+                0.20
+            );
+
+    }
+
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+
+        padding:
+            35px 20px;
+
+        text-align:
+            center;
+
+        color:
+            #475569;
+
+        border-top:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.06
+            );
+
+        font-size:
+            13px;
+
+    }
+
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (
+        max-width: 800px
+    ) {
+
+        .main-nav {
+
+            display:
+                none;
+
+        }
+
+
+        .arguments-grid {
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+    }
+
+
+    @media (
+        max-width: 600px
+    ) {
+
+        .top-bar {
+
+            padding:
+                0 18px;
+
+        }
+
+
+        .user-name-nav {
+
+            display:
+                none;
+
+        }
+
+
+        .page-container {
+
+            padding:
+                35px 16px 60px;
+
+        }
+
+
+        .form-card {
+
+            padding:
+                25px 18px;
+
+        }
+
+
+        .form-actions {
+
+            flex-direction:
+                column-reverse;
+
+        }
+
+
+        .cancel-button,
+        .submit-button {
+
+            width:
+                100%;
+
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="top-bar">
+
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <div class="logo-icon">
+            🧠
+        </div>
+
+        <span class="logo-text">
+            MindBattle
+        </span>
+
+    </a>
+
+
+
+    <nav class="main-nav">
+
+        <a
+            href="index.html"
+            class="nav-link"
+        >
+            🏠 Accueil
+        </a>
+
+
+        <a
+            href="debates.html"
+            class="nav-link"
+        >
+            ⚔️ Débats
+        </a>
+
+
+        <a
+            href="create.html"
+            class="nav-link active"
+        >
+            ➕ Créer
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="nav-link"
+        >
+            👤 Profil
+        </a>
+
+    </nav>
+
+
+
+    <div class="nav-actions">
+
+
+        <span
+            class="user-name-nav"
+            id="userNameNav"
+        >
+            👤 Utilisateur
+        </span>
+
+
+        <button
+            class="logout-button"
+            id="logoutButton"
+        >
+            🚪 Déconnexion
+        </button>
+
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTENU
+===================================================== -->
+
+<main class="page-container">
+
+
+    <a
+        href="debates.html"
+        class="back-link"
+    >
+        ← Retour aux débats
+    </a>
+
+
+
+    <header class="page-header">
+
+
+        <span class="page-badge">
+            ⚔️ NOUVEAU DÉBAT
+        </span>
+
+
+        <h1>
+            Lance une bataille d'idées
+        </h1>
+
+
+        <p>
+            Crée un débat intéressant,
+            présente les deux côtés de la question
+            et laisse la communauté décider.
+        </p>
+
+
+    </header>
+
+
+
+    <section class="form-card">
+
+
+        <form
+            id="createDebateForm"
+        >
+
+
+            <div class="form-group">
+
+
+                <label
+                    for="debateTitle"
+                    class="form-label"
+                >
+
+                    Sujet du débat
+
+                    <span class="required">
+                        *
+                    </span>
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="debateTitle"
+                    class="form-input"
+                    placeholder="Ex : Les réseaux sociaux sont-ils dangereux pour les jeunes ?"
+                    maxlength="150"
+                    required
+                >
+
+
+                <p class="form-help">
+
+                    Choisis une question claire
+                    qui peut être défendue
+                    de plusieurs points de vue.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="form-group">
+
+
+                <label
+                    for="debateCategory"
+                    class="form-label"
+                >
+
+                    Catégorie
+
+                    <span class="required">
+                        *
+                    </span>
+
+                </label>
+
+
+                <select
+                    id="debateCategory"
+                    class="form-select"
+                    required
+                >
+
+                    <option value="">
+                        Choisir une catégorie
+                    </option>
+
+                    <option value="Technologie">
+                        💻 Technologie
+                    </option>
+
+                    <option value="Société">
+                        🌍 Société
+                    </option>
+
+                    <option value="Éducation">
+                        🎓 Éducation
+                    </option>
+
+                    <option value="Politique">
+                        🏛️ Politique
+                    </option>
+
+                    <option value="Économie">
+                        💰 Économie
+                    </option>
+
+                    <option value="Sport">
+                        ⚽ Sport
+                    </option>
+
+                    <option value="Culture">
+                        🎨 Culture
+                    </option>
+
+                    <option value="Science">
+                        🔬 Science
+                    </option>
+
+                    <option value="Environnement">
+                        🌱 Environnement
+                    </option>
+
+                    <option value="Autre">
+                        ✨ Autre
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+
+            <div class="form-group">
+
+
+                <label
+                    for="debateDescription"
+                    class="form-label"
+                >
+
+                    Description du débat
+
+                </label>
+
+
+                <textarea
+                    id="debateDescription"
+                    class="form-textarea"
+                    placeholder="Explique le contexte de ta question..."
+                    maxlength="1000"
+                ></textarea>
+
+
+                <p class="form-help">
+
+                    Une bonne description aide
+                    les participants à comprendre
+                    le contexte du débat.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="arguments-title">
+
+
+                <h2>
+                    ⚔️ Présente les deux camps
+                </h2>
+
+
+                <p>
+                    Donne un argument pour chaque côté
+                    afin de lancer la discussion.
+                </p>
+
+
+            </div>
+
+
+
+            <div class="arguments-grid">
+
+
+                <div class="argument-box for">
+
+
+                    <label
+                        for="argumentFor"
+                        class="form-label"
+                    >
+
+                        🟢 Argument POUR
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+
+                    <textarea
+                        id="argumentFor"
+                        class="form-textarea"
+                        placeholder="Pourquoi pourrait-on être POUR ?"
+                        maxlength="2000"
+                        required
+                    ></textarea>
+
+
+                </div>
+
+
+
+                <div class="argument-box against">
+
+
+                    <label
+                        for="argumentAgainst"
+                        class="form-label"
+                    >
+
+                        🔴 Argument CONTRE
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+
+                    <textarea
+                        id="argumentAgainst"
+                        class="form-textarea"
+                        placeholder="Pourquoi pourrait-on être CONTRE ?"
+                        maxlength="2000"
+                        required
+                    ></textarea>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="preview-section">
+
+
+                <h2>
+                    👀 Aperçu
+                </h2>
+
+
+                <div class="preview-card">
+
+
+                    <span
+                        class="preview-category"
+                        id="previewCategory"
+                    >
+                        Catégorie
+                    </span>
+
+
+                    <h3
+                        id="previewTitle"
+                    >
+                        Ton sujet apparaîtra ici
+                    </h3>
+
+
+                    <p
+                        id="previewDescription"
+                    >
+                        La description de ton débat
+                        apparaîtra ici.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div
+                id="formMessage"
+                class="form-message"
+            ></div>
+
+
+
+            <div class="form-actions">
+
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    id="cancelButton"
+                >
+                    Annuler
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                    id="submitButton"
+                >
+                    ⚔️ Publier le débat
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    © 2026 MindBattle —
+    La bataille des idées commence ici.
+
+</footer>
+
+
+
+<script>
+
+
+    /* =====================================================
+       UTILISATEUR CONNECTÉ
+    ===================================================== */
+
+    function getCurrentUser() {
+
+        const savedUser =
+            localStorage.getItem(
+                "mindbattleCurrentUser"
+            );
+
+
+        if (!savedUser) {
+
+            window.location.href =
+                "login.html";
+
+            return null;
+
+        }
+
+
+        try {
+
+            return JSON.parse(
+                savedUser
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Erreur utilisateur :",
+                error
+            );
+
+
+            localStorage.removeItem(
+                "mindbattleCurrentUser"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+            return null;
+
+        }
+
+    }
+
+
+
+    let currentUser =
+        getCurrentUser();
+
+
+
+    /* =====================================================
+       AFFICHER UTILISATEUR
+    ===================================================== */
+
+    if (currentUser) {
+
+        const userNameNav =
+            document.getElementById(
+                "userNameNav"
+            );
+
+
+        const fullName =
+
+            (
+                currentUser.firstName
+                ||
+                ""
+            )
+            +
+            " "
+            +
+            (
+                currentUser.lastName
+                ||
+                ""
+            );
+
+
+        userNameNav.textContent =
+
+            "👤 "
+            +
+            (
+                fullName.trim()
+                ||
+                currentUser.username
+                ||
+                "Utilisateur"
+            );
+
+    }
+
+
+
+    /* =====================================================
+       DECONNEXION
+    ===================================================== */
+
+    document
+        .getElementById(
+            "logoutButton"
+        )
+        .addEventListener(
+            "click",
+            function() {
+
+
+                const confirmation =
+                    confirm(
+                        "Veux-tu vraiment te déconnecter de MindBattle ?"
+                    );
+
+
+                if (!confirmation) {
+
+                    return;
+
+                }
+
+
+                localStorage.removeItem(
+                    "mindbattleCurrentUser"
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const form =
+        document.getElementById(
+            "createDebateForm"
+        );
+
+
+    const titleInput =
+        document.getElementById(
+            "debateTitle"
+        );
+
+
+    const categoryInput =
+        document.getElementById(
+            "debateCategory"
+        );
+
+
+    const descriptionInput =
+        document.getElementById(
+            "debateDescription"
+        );
+
+
+    const argumentForInput =
+        document.getElementById(
+            "argumentFor"
+        );
+
+
+    const argumentAgainstInput =
+        document.getElementById(
+            "argumentAgainst"
+        );
+
+
+    const previewTitle =
+        document.getElementById(
+            "previewTitle"
+        );
+
+
+    const previewCategory =
+        document.getElementById(
+            "previewCategory"
+        );
+
+
+    const previewDescription =
+        document.getElementById(
+            "previewDescription"
+        );
+
+
+    const formMessage =
+        document.getElementById(
+            "formMessage"
+        );
+
+
+    const submitButton =
+        document.getElementById(
+            "submitButton"
+        );
+
+
+    const cancelButton =
+        document.getElementById(
+            "cancelButton"
+        );
+
+
+
+    /* =====================================================
+       RECUPERER DEBATS
+    ===================================================== */
+
+    function getDebates() {
+
+        const saved =
+            localStorage.getItem(
+                "mindbattleDebates"
+            );
+
+
+        if (!saved) {
+
+            return [];
+
+        }
+
+
+        try {
+
+            const debates =
+                JSON.parse(
+                    saved
+                );
+
+
+            return Array.isArray(
+                debates
+            )
+                ? debates
+                : [];
+
+
+        } catch (error) {
+
+            console.error(
+                "Erreur lors de la lecture des débats :",
+                error
+            );
+
+
+            return [];
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       SAUVEGARDER DEBATS
+    ===================================================== */
+
+    function saveDebates(
+        debates
+    ) {
+
+        localStorage.setItem(
+
+            "mindbattleDebates",
+
+            JSON.stringify(
+                debates
+            )
+
+        );
+
+    }
+
+
+
+    /* =====================================================
+       GENERER ID
+    ===================================================== */
+
+    function generateId() {
+
+        return (
+
+            Date.now()
+                .toString()
+
+            +
+
+            "-"
+
+            +
+
+            Math.random()
+                .toString(36)
+                .substring(
+                    2,
+                    9
+                )
+
+        );
+
+    }
+
+
+
+    /* =====================================================
+       APERCU
+    ===================================================== */
+
+    function updatePreview() {
+
+
+        const title =
+            titleInput.value.trim();
+
+
+        const category =
+            categoryInput.value;
+
+
+        const description =
+            descriptionInput.value.trim();
+
+
+
+        previewTitle.textContent =
+
+            title
+            ||
+            "Ton sujet apparaîtra ici";
+
+
+
+        previewCategory.textContent =
+
+            category
+            ||
+            "Catégorie";
+
+
+
+        previewDescription.textContent =
+
+            description
+            ||
+            "La description de ton débat apparaîtra ici.";
+
+    }
+
+
+
+    titleInput.addEventListener(
+        "input",
+        updatePreview
+    );
+
+
+    categoryInput.addEventListener(
+        "change",
+        updatePreview
+    );
+
+
+    descriptionInput.addEventListener(
+        "input",
+        updatePreview
+    );
+
+
+
+    /* =====================================================
+       MESSAGES
+    ===================================================== */
+
+    function showError(
+        message
+    ) {
+
+        formMessage.textContent =
+            message;
+
+
+        formMessage.className =
+            "form-message error";
+
+    }
+
+
+
+    function hideError() {
+
+        formMessage.textContent =
+            "";
+
+
+        formMessage.className =
+            "form-message";
+
+    }
+
+
+
+    /* =====================================================
+       CREATION DU DEBAT
+    ===================================================== */
+
+    form.addEventListener(
+        "submit",
+        function(event) {
+
+
+            event.preventDefault();
+
+
+            hideError();
+
+
+
+            /* =============================================
+               VERIFICATION UTILISATEUR
+            ============================================= */
+
+            currentUser =
+                getCurrentUser();
+
+
+            if (!currentUser) {
+
+                return;
+
+            }
+
+
+
+            /* =============================================
+               RECUPERER DONNEES
+            ============================================= */
+
+            const title =
+                titleInput.value.trim();
+
+
+            const category =
+                categoryInput.value;
+
+
+            const description =
+                descriptionInput.value.trim();
+
+
+            const argumentFor =
+                argumentForInput.value.trim();
+
+
+            const argumentAgainst =
+                argumentAgainstInput.value.trim();
+
+
+
+            /* =============================================
+               VALIDATION
+            ============================================= */
+
+            if (!title) {
+
+                showError(
+                    "Veuillez entrer un sujet pour le débat."
+                );
+
+                titleInput.focus();
+
+                return;
+
+            }
+
+
+
+            if (
+                title.length < 10
+            ) {
+
+                showError(
+                    "Le sujet doit contenir au moins 10 caractères."
+                );
+
+                titleInput.focus();
+
+                return;
+
+            }
+
+
+
+            if (!category) {
+
+                showError(
+                    "Veuillez choisir une catégorie."
+                );
+
+                categoryInput.focus();
+
+                return;
+
+            }
+
+
+
+            if (!argumentFor) {
+
+                showError(
+                    "Veuillez écrire un argument POUR."
+                );
+
+                argumentForInput.focus();
+
+                return;
+
+            }
+
+
+
+            if (!argumentAgainst) {
+
+                showError(
+                    "Veuillez écrire un argument CONTRE."
+                );
+
+                argumentAgainstInput.focus();
+
+                return;
+
+            }
+
+
+
+            if (
+                argumentFor.length < 10
+            ) {
+
+                showError(
+                    "L'argument POUR doit contenir au moins 10 caractères."
+                );
+
+                argumentForInput.focus();
+
+                return;
+
+            }
+
+
+
+            if (
+                argumentAgainst.length < 10
+            ) {
+
+                showError(
+                    "L'argument CONTRE doit contenir au moins 10 caractères."
+                );
+
+                argumentAgainstInput.focus();
+
+                return;
+
+            }
+
+
+
+            /* =============================================
+               BOUTON
+            ============================================= */
+
+            submitButton.disabled =
+                true;
+
+
+            submitButton.textContent =
+                "Publication...";
+
+
+
+            /* =============================================
+               RECUPERER DEBATS
+            ============================================= */
+
+            const debates =
+                getDebates();
+
+
+
+            /* =============================================
+               NOM COMPLET
+            ============================================= */
+
+            const authorName =
+
+                (
+
+                    (
+                        currentUser.firstName
+                        ||
+                        ""
+                    )
+                    +
+                    " "
+                    +
+                    (
+                        currentUser.lastName
+                        ||
+                        ""
+                    )
+
+                )
+                .trim()
+
+                ||
+
+                currentUser.username
+
+                ||
+
+                "Utilisateur";
+
+
+
+            /* =============================================
+               CREER DEBAT
+            ============================================= */
+
+            const newDebate = {
+
+
+                id:
+                    generateId(),
+
+
+                title:
+                    title,
+
+
+                category:
+                    category,
+
+
+                description:
+                    description,
+
+
+                argumentFor:
+                    argumentFor,
+
+
+                argumentAgainst:
+                    argumentAgainst,
+
+
+                /* =========================================
+                   AUTEUR CONNECTE
+                ========================================= */
+
+                author:
+                    authorName,
+
+
+                authorUsername:
+                    currentUser.username
+                    ||
+                    "",
+
+
+                authorId:
+                    currentUser.id
+                    ||
+                    "",
+
+
+                authorAvatar:
+                    currentUser.avatar
+                    ||
+                    "🧠",
+
+
+                createdAt:
+                    new Date()
+                        .toISOString(),
+
+
+                status:
+                    "En cours",
+
+
+                views:
+                    0,
+
+
+                votesFor:
+                    0,
+
+
+                votesAgainst:
+                    0,
+
+
+                comments:
+                    []
+
+            };
+
+
+
+            /* =============================================
+               AJOUTER DEBAT
+            ============================================= */
+
+            debates.push(
+                newDebate
+            );
+
+
+
+            /* =============================================
+               SAUVEGARDER DEBATS
+            ============================================= */
+
+            saveDebates(
+                debates
+            );
+
+
+
+            /* =============================================
+               METTRE A JOUR LE COMPTEUR
+               DEBATS CREES
+            ============================================= */
+
+            const usersSaved =
+
+                localStorage.getItem(
+                    "mindbattleUsers"
+                );
+
+
+            let users = [];
+
+
+            if (usersSaved) {
+
+                try {
+
+                    users =
+                        JSON.parse(
+                            usersSaved
+                        );
+
+
+                    if (
+                        !Array.isArray(
+                            users
+                        )
+                    ) {
+
+                        users = [];
+
+                    }
+
+
+                } catch (error) {
+
+                    users = [];
+
+                }
+
+            }
+
+
+
+            const userIndex =
+
+                users.findIndex(
+
+                    user =>
+
+                        user.id
+                        ===
+                        currentUser.id
+
+                );
+
+
+
+            if (
+                userIndex !== -1
+            ) {
+
+
+                users[
+                    userIndex
+                ].debatesCreated =
+
+                    (
+                        Number(
+                            users[
+                                userIndex
+                            ].debatesCreated
+                        )
+                        ||
+                        0
+                    )
+                    +
+                    1;
+
+
+
+                currentUser.debatesCreated =
+
+                    users[
+                        userIndex
+                    ].debatesCreated;
+
+
+
+                /* =========================================
+                   SAUVEGARDER USERS
+                ========================================= */
+
+                localStorage.setItem(
+
+                    "mindbattleUsers",
+
+                    JSON.stringify(
+                        users
+                    )
+
+                );
+
+            }
+
+
+
+            /* =============================================
+               METTRE A JOUR SESSION
+            ============================================= */
+
+            localStorage.setItem(
+
+                "mindbattleCurrentUser",
+
+                JSON.stringify(
+                    currentUser
+                )
+
+            );
+
+
+
+            /* =============================================
+               REDIRECTION
+            ============================================= */
+
+            window.location.href =
+
+                "debate.html?id="
+
+                +
+
+                encodeURIComponent(
+                    newDebate.id
+                );
+
+
+        }
+    );
+
+
+
+    /* =====================================================
+       ANNULER
+    ===================================================== */
+
+    cancelButton.addEventListener(
+
+        "click",
+
+        function() {
+
+
+            const hasContent =
+
+                titleInput.value.trim()
+
+                ||
+
+                descriptionInput.value.trim()
+
+                ||
+
+                argumentForInput.value.trim()
+
+                ||
+
+                argumentAgainstInput.value.trim();
+
+
+
+            if (hasContent) {
+
+
+                const confirmCancel =
+
+                    confirm(
+
+                        "Tu as commencé à remplir ce débat. Veux-tu vraiment annuler ?"
+
+                    );
+
+
+                if (
+                    !confirmCancel
+                ) {
+
+                    return;
+
+                }
+
+            }
+
+
+
+            window.location.href =
+                "debates.html";
+
+        }
+
+    );
+
+</script>
+```
+
+</body>
+
+</html>

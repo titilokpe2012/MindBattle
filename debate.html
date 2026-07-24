@@ -1,0 +1,2610 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Débat — MindBattle</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            color: #f8fafc;
+
+            background:
+
+                radial-gradient(
+                    circle at top left,
+                    rgba(
+                        124,
+                        58,
+                        237,
+                        0.20
+                    ),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(
+                        147,
+                        51,
+                        234,
+                        0.12
+                    ),
+                    transparent 30%
+                ),
+
+                #070a12;
+
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .top-bar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            height: 72px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 6%;
+
+            background:
+                rgba(
+                    7,
+                    10,
+                    18,
+                    0.88
+                );
+
+            backdrop-filter:
+                blur(18px);
+
+            border-bottom:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+        }
+
+
+        .logo-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.35
+                );
+
+        }
+
+
+        .logo-text {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #c4b5fd
+                );
+
+            -webkit-background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+
+        }
+
+
+        /* =====================================================
+           NAV
+        ===================================================== */
+
+        .main-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .nav-link {
+
+            padding:
+                10px 15px;
+
+            color:
+                #94a3b8;
+
+            border-radius:
+                10px;
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .nav-link:hover {
+
+            color:
+                #ffffff;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+        }
+
+
+        .nav-link.active {
+
+            color:
+                #ffffff;
+
+            background:
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.18
+                );
+
+        }
+
+
+        /* =====================================================
+           AUTH
+        ===================================================== */
+
+        .auth-buttons {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .btn-login {
+
+            padding:
+                10px 17px;
+
+            color:
+                #c4b5fd;
+
+            border:
+                1px solid
+                rgba(
+                    139,
+                    92,
+                    246,
+                    0.35
+                );
+
+            border-radius:
+                10px;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .btn-register {
+
+            padding:
+                11px 18px;
+
+            color:
+                #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            border-radius:
+                10px;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page-container {
+
+            width:
+                min(
+                    100%,
+                    1000px
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                45px 24px 80px;
+
+        }
+
+
+        /* =====================================================
+           BACK
+        ===================================================== */
+
+        .back-link {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            margin-bottom:
+                25px;
+
+            color:
+                #94a3b8;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .back-link:hover {
+
+            color:
+                #c4b5fd;
+
+        }
+
+
+        /* =====================================================
+           DEBATE CARD
+        ===================================================== */
+
+        .debate-card {
+
+            padding:
+                35px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(
+                        22,
+                        26,
+                        39,
+                        0.96
+                    ),
+                    rgba(
+                        13,
+                        16,
+                        26,
+                        0.96
+                    )
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.07
+                );
+
+            border-radius:
+                24px;
+
+            box-shadow:
+                0 25px 80px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.25
+                );
+
+        }
+
+
+        /* =====================================================
+           CATEGORY
+        ===================================================== */
+
+        .category {
+
+            display:
+                inline-block;
+
+            padding:
+                7px 12px;
+
+            margin-bottom:
+                18px;
+
+            color:
+                #c4b5fd;
+
+            background:
+                rgba(
+                    124,
+                    58,
+                    237,
+                    0.14
+                );
+
+            border:
+                1px solid
+                rgba(
+                    139,
+                    92,
+                    246,
+                    0.20
+                );
+
+            border-radius:
+                8px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
+        .debate-title {
+
+            margin-bottom:
+                18px;
+
+            font-size:
+                clamp(
+                    28px,
+                    5vw,
+                    44px
+                );
+
+            line-height:
+                1.2;
+
+        }
+
+
+        /* =====================================================
+           AUTHOR
+        ===================================================== */
+
+        .author-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding:
+                15px 0;
+
+            margin-bottom:
+                22px;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+            border-bottom:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+        }
+
+
+        .author-avatar {
+
+            width:
+                44px;
+
+            height:
+                44px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius:
+                50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            font-size:
+                20px;
+
+        }
+
+
+        .author-info strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                4px;
+
+            font-size:
+                14px;
+
+        }
+
+
+        .author-info span {
+
+            color:
+                #64748b;
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .description {
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        /* =====================================================
+           ARGUMENTS
+        ===================================================== */
+
+        .arguments {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+
+            gap:
+                20px;
+
+        }
+
+
+        .argument {
+
+            padding:
+                24px;
+
+            border-radius:
+                18px;
+
+        }
+
+
+        .argument h2 {
+
+            margin-bottom:
+                12px;
+
+            font-size:
+                19px;
+
+        }
+
+
+        .argument p {
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        .argument-for {
+
+            background:
+                rgba(
+                    34,
+                    197,
+                    94,
+                    0.07
+                );
+
+            border:
+                1px solid
+                rgba(
+                    34,
+                    197,
+                    94,
+                    0.20
+                );
+
+        }
+
+
+        .argument-for h2 {
+
+            color:
+                #86efac;
+
+        }
+
+
+        .argument-against {
+
+            background:
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.07
+                );
+
+            border:
+                1px solid
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.20
+                );
+
+        }
+
+
+        .argument-against h2 {
+
+            color:
+                #fca5a5;
+
+        }
+
+
+        /* =====================================================
+           VOTE
+        ===================================================== */
+
+        .vote-section {
+
+            margin-top:
+                30px;
+
+            padding-top:
+                30px;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.07
+                );
+
+        }
+
+
+        .vote-section h2 {
+
+            margin-bottom:
+                18px;
+
+            font-size:
+                20px;
+
+        }
+
+
+        .vote-buttons {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                15px;
+
+        }
+
+
+        .vote-button {
+
+            padding:
+                16px;
+
+            color:
+                #ffffff;
+
+            border:
+                none;
+
+            border-radius:
+                12px;
+
+            cursor:
+                pointer;
+
+            font-size:
+                15px;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .vote-button:hover {
+
+            transform:
+                translateY(
+                    -2px
+                );
+
+        }
+
+
+        .vote-for {
+
+            background:
+                rgba(
+                    34,
+                    197,
+                    94,
+                    0.16
+                );
+
+            border:
+                1px solid
+                rgba(
+                    34,
+                    197,
+                    94,
+                    0.30
+                );
+
+            color:
+                #86efac;
+
+        }
+
+
+        .vote-against {
+
+            background:
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.16
+                );
+
+            border:
+                1px solid
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.30
+                );
+
+            color:
+                #fca5a5;
+
+        }
+
+
+        .vote-results {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                15px;
+
+            margin-top:
+                20px;
+
+        }
+
+
+        .vote-result {
+
+            padding:
+                15px;
+
+            text-align:
+                center;
+
+            background:
+                #0d101a;
+
+            border-radius:
+                12px;
+
+        }
+
+
+        .vote-result strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                5px;
+
+            font-size:
+                22px;
+
+        }
+
+
+        .vote-result span {
+
+            color:
+                #64748b;
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* =====================================================
+           COMMENTS
+        ===================================================== */
+
+        .comments-section {
+
+            margin-top:
+                30px;
+
+            padding:
+                30px;
+
+            background:
+                #0d101a;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+            border-radius:
+                20px;
+
+        }
+
+
+        .comments-section h2 {
+
+            margin-bottom:
+                20px;
+
+            font-size:
+                21px;
+
+        }
+
+
+        .comment-form {
+
+            display:
+                flex;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .comment-input {
+
+            flex:
+                1;
+
+            padding:
+                14px 16px;
+
+            color:
+                #ffffff;
+
+            background:
+                #070a12;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.09
+                );
+
+            border-radius:
+                10px;
+
+            outline:
+                none;
+
+        }
+
+
+        .comment-input:focus {
+
+            border-color:
+                #7c3aed;
+
+        }
+
+
+        .comment-button {
+
+            padding:
+                12px 18px;
+
+            color:
+                #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            border:
+                none;
+
+            border-radius:
+                10px;
+
+            cursor:
+                pointer;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .comment-item {
+
+            padding:
+                16px 0;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+        }
+
+
+        .comment-author {
+
+            margin-bottom:
+                7px;
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            color:
+                #c4b5fd;
+
+        }
+
+
+        .comment-text {
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .comment-date {
+
+            display:
+                block;
+
+            margin-top:
+                7px;
+
+            color:
+                #475569;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .empty-comments {
+
+            color:
+                #64748b;
+
+            font-size:
+                13px;
+
+        }
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error-message {
+
+            padding:
+                20px;
+
+            text-align:
+                center;
+
+            color:
+                #fca5a5;
+
+            background:
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.10
+                );
+
+            border:
+                1px solid
+                rgba(
+                    239,
+                    68,
+                    68,
+                    0.20
+                );
+
+            border-radius:
+                15px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            padding:
+                35px 20px;
+
+            text-align:
+                center;
+
+            color:
+                #475569;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+            font-size:
+                13px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (
+            max-width: 800px
+        ) {
+
+            .main-nav {
+
+                display:
+                    none;
+
+            }
+
+
+            .arguments {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .top-bar {
+
+                padding:
+                    0 18px;
+
+            }
+
+
+            .btn-login {
+
+                display:
+                    none;
+
+            }
+
+
+            .page-container {
+
+                padding:
+                    30px 16px 60px;
+
+            }
+
+
+            .debate-card {
+
+                padding:
+                    25px 18px;
+
+            }
+
+
+            .comments-section {
+
+                padding:
+                    22px 16px;
+
+            }
+
+
+            .comment-form {
+
+                flex-direction:
+                    column;
+
+            }
+
+
+            .comment-button {
+
+                width:
+                    100%;
+
+            }
+
+
+            .vote-buttons {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
+    <header class="top-bar">
+
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <div class="logo-icon">
+                🧠
+            </div>
+
+            <span class="logo-text">
+                MindBattle
+            </span>
+
+        </a>
+
+
+        <nav class="main-nav">
+
+            <a
+                href="index.html"
+                class="nav-link"
+            >
+                🏠 Accueil
+            </a>
+
+
+            <a
+                href="debates.html"
+                class="nav-link active"
+            >
+                ⚔️ Débats
+            </a>
+
+
+            <a
+                href="create.html"
+                class="nav-link"
+            >
+                ➕ Créer
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="nav-link"
+            >
+                👤 Profil
+            </a>
+
+        </nav>
+
+
+        <div class="auth-buttons">
+
+            <a
+                href="login.html"
+                class="btn-login"
+            >
+                Connexion
+            </a>
+
+
+            <a
+                href="register.html"
+                class="btn-register"
+            >
+                S'inscrire
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENU
+    ===================================================== -->
+
+    <main class="page-container">
+
+
+        <a
+            href="debates.html"
+            class="back-link"
+        >
+            ← Retour aux débats
+        </a>
+
+
+        <div id="debateContainer">
+
+
+            <!-- DEBAT CHARGE PAR JAVASCRIPT -->
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        © 2026 MindBattle —
+        La bataille des idées commence ici.
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           RECUPERER L'ID DU DEBAT
+        ===================================================== */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const debateId =
+            params.get(
+                "id"
+            );
+
+
+        const debateContainer =
+            document.getElementById(
+                "debateContainer"
+            );
+
+
+        /* =====================================================
+           UTILISATEUR CONNECTE
+        ===================================================== */
+
+        function getCurrentUser() {
+
+            const saved =
+                localStorage.getItem(
+                    "mindbattleCurrentUser"
+                );
+
+
+            if (!saved) {
+
+                return null;
+
+            }
+
+
+            try {
+
+                return JSON.parse(
+                    saved
+                );
+
+            } catch (error) {
+
+                return null;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RECUPERER LES DEBATS
+        ===================================================== */
+
+        function getDebates() {
+
+            const saved =
+                localStorage.getItem(
+                    "mindbattleDebates"
+                );
+
+
+            if (!saved) {
+
+                return [];
+
+            }
+
+
+            try {
+
+                const debates =
+                    JSON.parse(
+                        saved
+                    );
+
+
+                return Array.isArray(
+                    debates
+                )
+                    ? debates
+                    : [];
+
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SAUVEGARDER
+        ===================================================== */
+
+        function saveDebates(
+            debates
+        ) {
+
+            localStorage.setItem(
+
+                "mindbattleDebates",
+
+                JSON.stringify(
+                    debates
+                )
+
+            );
+
+        }
+
+
+        /* =====================================================
+           FORMATER LA DATE
+        ===================================================== */
+
+        function formatDate(
+            date
+        ) {
+
+            if (!date) {
+
+                return "";
+
+            }
+
+
+            const d =
+                new Date(
+                    date
+                );
+
+
+            return d.toLocaleDateString(
+                "fr-FR",
+                {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           ECHAPPER LE HTML
+        ===================================================== */
+
+        function escapeHTML(
+            text
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                text
+                ||
+                "";
+
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =====================================================
+           CHARGER LE DEBAT
+        ===================================================== */
+
+        function loadDebate() {
+
+
+            const debates =
+                getDebates();
+
+
+            const debate =
+                debates.find(
+                    function(item) {
+
+                        return (
+                            String(
+                                item.id
+                            )
+                            ===
+                            String(
+                                debateId
+                            )
+                        );
+
+                    }
+                );
+
+
+            if (!debate) {
+
+                debateContainer.innerHTML = `
+
+                    <div class="error-message">
+
+                        <h2>
+                            Débat introuvable
+                        </h2>
+
+                        <p style="margin-top:10px;">
+                            Ce débat n'existe pas
+                            ou a été supprimé.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            /* =================================================
+               INCREMENTER LES VUES
+            ================================================= */
+
+            debate.views =
+                (
+                    Number(
+                        debate.views
+                    )
+                    ||
+                    0
+                )
+                +
+                1;
+
+
+            saveDebates(
+                debates
+            );
+
+
+            /* =================================================
+               DONNEES
+            ================================================= */
+
+            const author =
+                debate.author
+                ||
+                "Utilisateur";
+
+
+            const avatar =
+                debate.authorAvatar
+                ||
+                "🧠";
+
+
+            const description =
+                debate.description
+                ||
+                "Aucune description disponible.";
+
+
+            const argumentFor =
+                debate.argumentFor
+                ||
+                "Aucun argument POUR fourni.";
+
+
+            const argumentAgainst =
+                debate.argumentAgainst
+                ||
+                "Aucun argument CONTRE fourni.";
+
+
+            const votesFor =
+                Number(
+                    debate.votesFor
+                )
+                ||
+                0;
+
+
+            const votesAgainst =
+                Number(
+                    debate.votesAgainst
+                )
+                ||
+                0;
+
+
+            const comments =
+                Array.isArray(
+                    debate.comments
+                )
+                    ? debate.comments
+                    : [];
+
+
+            /* =================================================
+               AFFICHER
+            ================================================= */
+
+            debateContainer.innerHTML = `
+
+                <article class="debate-card">
+
+
+                    <span class="category">
+
+                        ${escapeHTML(
+                            debate.category
+                            ||
+                            "Autre"
+                        )}
+
+                    </span>
+
+
+                    <h1 class="debate-title">
+
+                        ${escapeHTML(
+                            debate.title
+                        )}
+
+                    </h1>
+
+
+                    <div class="author-box">
+
+
+                        <div class="author-avatar">
+
+                            ${escapeHTML(
+                                avatar
+                            )}
+
+                        </div>
+
+
+                        <div class="author-info">
+
+                            <strong>
+
+                                ${escapeHTML(
+                                    author
+                                )}
+
+                            </strong>
+
+
+                            <span>
+
+                                Publié le
+                                ${formatDate(
+                                    debate.createdAt
+                                )}
+
+                                ·
+
+                                ${debate.views}
+                                vue${debate.views > 1 ? "s" : ""}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <p class="description">
+
+                        ${escapeHTML(
+                            description
+                        )}
+
+                    </p>
+
+
+                    <div class="arguments">
+
+
+                        <div class="argument argument-for">
+
+                            <h2>
+                                🟢 POUR
+                            </h2>
+
+                            <p>
+
+                                ${escapeHTML(
+                                    argumentFor
+                                )}
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="argument argument-against">
+
+                            <h2>
+                                🔴 CONTRE
+                            </h2>
+
+                            <p>
+
+                                ${escapeHTML(
+                                    argumentAgainst
+                                )}
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="vote-section">
+
+
+                        <h2>
+                            ⚔️ Quel est ton avis ?
+                        </h2>
+
+
+                        <div class="vote-buttons">
+
+
+                            <button
+                                class="vote-button vote-for"
+                                id="voteForButton"
+                            >
+
+                                🟢 Je suis POUR
+
+                            </button>
+
+
+                            <button
+                                class="vote-button vote-against"
+                                id="voteAgainstButton"
+                            >
+
+                                🔴 Je suis CONTRE
+
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="vote-results">
+
+
+                            <div class="vote-result">
+
+                                <strong
+                                    id="votesForCount"
+                                >
+
+                                    ${votesFor}
+
+                                </strong>
+
+                                <span>
+                                    Votes POUR
+                                </span>
+
+                            </div>
+
+
+                            <div class="vote-result">
+
+                                <strong
+                                    id="votesAgainstCount"
+                                >
+
+                                    ${votesAgainst}
+
+                                </strong>
+
+                                <span>
+                                    Votes CONTRE
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </article>
+
+
+
+                <section class="comments-section">
+
+
+                    <h2>
+                        💬 Discussion
+                    </h2>
+
+
+                    <form
+                        class="comment-form"
+                        id="commentForm"
+                    >
+
+
+                        <input
+                            type="text"
+                            id="commentInput"
+                            class="comment-input"
+                            placeholder="Donne ton avis..."
+                            maxlength="500"
+                            required
+                        >
+
+
+                        <button
+                            type="submit"
+                            class="comment-button"
+                        >
+
+                            Publier
+
+                        </button>
+
+
+                    </form>
+
+
+                    <div
+                        id="commentsList"
+                    ></div>
+
+
+                </section>
+
+            `;
+
+
+            renderComments(
+                comments
+            );
+
+
+            setupVotes(
+                debate,
+                debates
+            );
+
+
+            setupComments(
+                debate,
+                debates
+            );
+
+        }
+
+
+        /* =====================================================
+           AFFICHER LES COMMENTAIRES
+        ===================================================== */
+
+        function renderComments(
+            comments
+        ) {
+
+
+            const commentsList =
+                document.getElementById(
+                    "commentsList"
+                );
+
+
+            if (
+                !comments
+                ||
+                comments.length === 0
+            ) {
+
+                commentsList.innerHTML = `
+
+                    <p class="empty-comments">
+
+                        Aucun commentaire pour le moment.
+                        Sois le premier à donner ton avis !
+
+                    </p>
+
+                `;
+
+                return;
+
+            }
+
+
+            commentsList.innerHTML = "";
+
+
+            comments
+                .slice()
+                .reverse()
+                .forEach(
+                    function(comment) {
+
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        item.className =
+                            "comment-item";
+
+
+                        item.innerHTML = `
+
+                            <div class="comment-author">
+
+                                ${escapeHTML(
+                                    comment.author
+                                    ||
+                                    "Utilisateur"
+                                )}
+
+                            </div>
+
+
+                            <div class="comment-text">
+
+                                ${escapeHTML(
+                                    comment.text
+                                )}
+
+                            </div>
+
+
+                            <span class="comment-date">
+
+                                ${formatDate(
+                                    comment.createdAt
+                                )}
+
+                            </span>
+
+                        `;
+
+
+                        commentsList.appendChild(
+                            item
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           VOTES
+        ===================================================== */
+
+        function setupVotes(
+            debate,
+            debates
+        ) {
+
+
+            const voteForButton =
+                document.getElementById(
+                    "voteForButton"
+                );
+
+
+            const voteAgainstButton =
+                document.getElementById(
+                    "voteAgainstButton"
+                );
+
+
+            const votesForCount =
+                document.getElementById(
+                    "votesForCount"
+                );
+
+
+            const votesAgainstCount =
+                document.getElementById(
+                    "votesAgainstCount"
+                );
+
+
+            voteForButton.addEventListener(
+                "click",
+                function() {
+
+
+                    const currentUser =
+                        getCurrentUser();
+
+
+                    if (!currentUser) {
+
+                        alert(
+                            "Tu dois être connecté pour voter."
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+
+                    }
+
+
+                    const voteKey =
+
+                        "mindbattleVote_"
+
+                        +
+
+                        debate.id
+
+                        +
+
+                        "_"
+
+                        +
+
+                        currentUser.id;
+
+
+                    const previousVote =
+                        localStorage.getItem(
+                            voteKey
+                        );
+
+
+                    if (
+                        previousVote
+                        ===
+                        "for"
+                    ) {
+
+                        alert(
+                            "Tu as déjà voté POUR ce débat."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        previousVote
+                        ===
+                        "against"
+                    ) {
+
+                        debate.votesAgainst =
+                            Math.max(
+                                0,
+                                (
+                                    Number(
+                                        debate.votesAgainst
+                                    )
+                                    ||
+                                    0
+                                )
+                                -
+                                1
+                            );
+
+                    }
+
+
+                    debate.votesFor =
+
+                        (
+                            Number(
+                                debate.votesFor
+                            )
+                            ||
+                            0
+                        )
+                        +
+                        1;
+
+
+                    localStorage.setItem(
+
+                        voteKey,
+
+                        "for"
+
+                    );
+
+
+                    saveDebates(
+                        debates
+                    );
+
+
+                    votesForCount.textContent =
+                        debate.votesFor;
+
+
+                    votesAgainstCount.textContent =
+                        debate.votesAgainst;
+
+
+                    alert(
+                        "Ton vote POUR a été enregistré !"
+                    );
+
+                }
+            );
+
+
+            voteAgainstButton.addEventListener(
+                "click",
+                function() {
+
+
+                    const currentUser =
+                        getCurrentUser();
+
+
+                    if (!currentUser) {
+
+                        alert(
+                            "Tu dois être connecté pour voter."
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+
+                    }
+
+
+                    const voteKey =
+
+                        "mindbattleVote_"
+
+                        +
+
+                        debate.id
+
+                        +
+
+                        "_"
+
+                        +
+
+                        currentUser.id;
+
+
+                    const previousVote =
+                        localStorage.getItem(
+                            voteKey
+                        );
+
+
+                    if (
+                        previousVote
+                        ===
+                        "against"
+                    ) {
+
+                        alert(
+                            "Tu as déjà voté CONTRE ce débat."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        previousVote
+                        ===
+                        "for"
+                    ) {
+
+                        debate.votesFor =
+                            Math.max(
+                                0,
+                                (
+                                    Number(
+                                        debate.votesFor
+                                    )
+                                    ||
+                                    0
+                                )
+                                -
+                                1
+                            );
+
+                    }
+
+
+                    debate.votesAgainst =
+
+                        (
+                            Number(
+                                debate.votesAgainst
+                            )
+                            ||
+                            0
+                        )
+                        +
+                        1;
+
+
+                    localStorage.setItem(
+
+                        voteKey,
+
+                        "against"
+
+                    );
+
+
+                    saveDebates(
+                        debates
+                    );
+
+
+                    votesForCount.textContent =
+                        debate.votesFor;
+
+
+                    votesAgainstCount.textContent =
+                        debate.votesAgainst;
+
+
+                    alert(
+                        "Ton vote CONTRE a été enregistré !"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           COMMENTAIRES
+        ===================================================== */
+
+        function setupComments(
+            debate,
+            debates
+        ) {
+
+
+            const commentForm =
+                document.getElementById(
+                    "commentForm"
+                );
+
+
+            const commentInput =
+                document.getElementById(
+                    "commentInput"
+                );
+
+
+            commentForm.addEventListener(
+                "submit",
+                function(event) {
+
+
+                    event.preventDefault();
+
+
+                    const currentUser =
+                        getCurrentUser();
+
+
+                    if (!currentUser) {
+
+                        alert(
+                            "Tu dois être connecté pour commenter."
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+
+                    }
+
+
+                    const text =
+                        commentInput.value.trim();
+
+
+                    if (!text) {
+
+                        return;
+
+                    }
+
+
+                    let author =
+                        "Utilisateur";
+
+
+                    if (
+                        currentUser.firstName
+                        ||
+                        currentUser.lastName
+                    ) {
+
+                        author =
+
+                            (
+                                currentUser.firstName
+                                ||
+                                ""
+                            )
+
+                            +
+
+                            " "
+
+                            +
+
+                            (
+                                currentUser.lastName
+                                ||
+                                ""
+                            );
+
+                    }
+
+
+                    if (
+                        !author.trim()
+                        &&
+                        currentUser.username
+                    ) {
+
+                        author =
+                            currentUser.username;
+
+                    }
+
+
+                    const newComment = {
+
+                        id:
+                            Date.now()
+                            +
+                            "-"
+                            +
+                            Math.random()
+                                .toString(36)
+                                .substring(
+                                    2,
+                                    8
+                                ),
+
+                        author:
+                            author.trim(),
+
+                        authorId:
+                            currentUser.id,
+
+                        text:
+                            text,
+
+                        createdAt:
+                            new Date()
+                                .toISOString()
+
+                    };
+
+
+                    if (
+                        !Array.isArray(
+                            debate.comments
+                        )
+                    ) {
+
+                        debate.comments =
+                            [];
+
+                    }
+
+
+                    debate.comments.push(
+                        newComment
+                    );
+
+
+                    saveDebates(
+                        debates
+                    );
+
+
+                    commentInput.value =
+                        "";
+
+
+                    renderComments(
+                        debate.comments
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           LANCER LA PAGE
+        ===================================================== */
+
+        loadDebate();
+
+    </script>
+
+
+</body>
+
+</html>
+```
